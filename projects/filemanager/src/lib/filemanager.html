@@ -1,0 +1,36 @@
+<div class="filemanager-container">
+  <div class="fm-header">
+    <ri-toolbar
+      #toolbar
+      [currentFolderId]="currentSelectedFolderId"
+      (onAddFolderClick)="onAddFolder()"
+      (onUpload)="onUpload($event)"
+      (onMenuButtonClick)="onMenuButtonClick($event)"
+    ></ri-toolbar>
+  </div>
+  <div class="fm-main-box">
+    <div class="folders-box">
+      <ri-tree [treeModel]="treeModel"></ri-tree>
+    </div>
+    <div class="files-box">
+      <ri-tree-parents-list [treeModel]="treeModel"></ri-tree-parents-list>
+      <ri-files-list [files]="filteredFiles$ | async"
+                     [selectedFiles]="selectedFiles$ | async"
+                     (onPreviewFile)="onPreviewFile($event)"
+                     (onCropFile)="onOpenCropFileEditor($event)"
+                     (onSelectFile)="onSelectFile($event)"
+      ></ri-files-list>
+    </div>
+  </div>
+  <div *ngIf="isPreviewMode || isCropMode" class="backdrop">
+    <div class="modal-view">
+      <div class="modal-close">
+        <i class="fa fa-2x fa-times" (click)="closeModal()"></i>
+      </div>
+      <ri-file-preview *ngIf="isPreviewMode" [files]="filteredFiles$ | async"
+                       [file]="currentSelectedFile"></ri-file-preview>
+      <crop-image *ngIf="isCropMode" [file]="currentSelectedFile"></crop-image>
+    </div>
+  </div>
+  <simple-notifications [options]="notificationOptions"></simple-notifications>
+</div>

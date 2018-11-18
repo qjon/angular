@@ -1,0 +1,26 @@
+<div class="tree-item"
+     [ngClass]="{'tree-item-selected': isSelected && !treeModel.wasPreviouslySelected(node.id)}"
+     (contextmenu)="onContextMenu($event)"
+     riDroppable
+     riDraggable
+     [dragZone]="treeModel.configuration.dragZone"
+     [dropConfig]="{dropAllowedCssClass: 'drop-allowed', dropZone: treeModel.configuration.dropZone}"
+     [data]="node"
+     id="node-{{node.id}}"
+>
+  <i *ngIf="!isExpanded" (click)="expand()" class="fa fa-caret-right pointer"></i>
+  <i *ngIf="isExpanded" (click)="collapse()" class="fa fa-caret-down pointer"></i>
+  <span *ngIf="!isEditMode" class="tree-item-name" (click)="onSelect()">{{node.name}}</span>
+  <form name="form">
+    <input #inputElement type="text" class="form-control" *ngIf="isEditMode" [formControl]="nameField"
+           name="name" (keydown)="onChange($event)" (blur)="onBlur()"/>
+  </form>
+</div>
+<div class="tree" *ngIf="isExpanded" [@expand]>
+  <ri-tree-item *ngFor="let child of children$ | async; trackBy: trackByFn"
+                [node]="child"
+                [treeModel]="treeModel"
+                [isExpanded]="treeModel.isExpanded(child)"
+                [isSelected]="treeModel.isSelected(child)"
+                [contextMenu]="contextMenu"></ri-tree-item>
+</div>

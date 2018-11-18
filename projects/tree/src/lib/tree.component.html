@@ -1,0 +1,26 @@
+<div class="tree">
+  <button *ngIf="treeModel.configuration.showAddButton" class="btn btn-dark add-node-button" (click)="onAdd()">
+    <i class="fa fa-plus"></i> {{'RI_TREE_LBL_ADD_NODE' | translate}}
+  </button>
+  <!--@formatter:off-->
+  <div #customTemplate><ng-content></ng-content></div>
+  <!--@formatter:on-->
+  <div *ngIf="customTemplate.childNodes.length === 0">
+    <ri-tree-item
+      class="root-node"
+      *ngFor="let node of rootNodes$ | async; trackBy: trackByFn"
+      [node]="node"
+      [treeModel]="treeModel"
+      [isSelected]="treeModel.isSelected(node)"
+      [isExpanded]="treeModel.isExpanded(node)"
+      [contextMenu]="contextMenu"></ri-tree-item>
+  </div>
+  <ri-dropzone [treeModel]="treeModel"></ri-dropzone>
+  <context-menu id="context-menu-{{treeModel.treeId}}" #contextMenu>
+    <ng-template *ngFor="let menuItem of menuList" contextMenuItem let-item
+                 (execute)="onContextMenuClick(menuItem.name, $event.item)">
+      <span class="{{menuItem.iconCls}}" style="width: 20px; display: inline-block;"></span>
+      {{menuItem.text | translate}}
+    </ng-template>
+  </context-menu>
+</div>

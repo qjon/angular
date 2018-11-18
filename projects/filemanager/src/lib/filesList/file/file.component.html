@@ -1,0 +1,26 @@
+<div *ngIf="configuration.isMultiSelection" class="file-selection-input">
+  <i class="fa fa-2x checked fa-check-square-o" (click)="unSelectFile()"></i>
+  <i class="fa fa-2x unchecked fa-square-o" (click)="selectFile()"></i>
+</div>
+<div class="rounded file-img" [ngClass]="{'file-img-symbol': !file.isImage()}"
+     [style.background-image]="'url(' + file.thumbnailUrl + ')'"></div>
+<span class="file-name">{{file.name}}</span>
+<div class="file-menu">
+  <div class="btn-group btn-group-sm">
+    <!-- Add message: [message]="getRemoveMessage(file)" -->
+    <button mwlConfirmationPopover [title]="removeTitle" [appendToBody]="true"
+            [confirmText]="'Yes'" [cancelText]="'No'" placement="bottom" (confirm)="deleteFile($event, file)"
+            class="btn btn-sm btn-danger btn-icon">
+      <i class="fa fa-trash"></i>
+    </button>
+    <button (click)="openPreview($event)" class="btn btn-sm btn-secondary btn-icon">
+      <i class="fa fa-search"></i>
+    </button>
+    <button *ngIf="file.isImage()" (click)="openCrop($event)" class="btn btn-sm btn-secondary btn-icon">
+      <i class="fa fa-crop"></i>
+    </button>
+    <button *ngIf="file.isImage()" (click)="chooseFile($event, file)" class="btn btn-sm btn-primary btn-icon">
+      <i class="fa fa-image"></i>
+    </button>
+  </div>
+</div>

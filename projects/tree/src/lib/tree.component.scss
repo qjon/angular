@@ -1,0 +1,82 @@
+$iconWidth: 8px;
+$colorHover: rgba(161, 197, 238, 0.2);
+$colorSelected: #549dee;
+$colorBorder: #4684ee;
+
+.tree {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+  position: relative;
+
+  .dropdown {
+    position: inherit;
+  }
+
+  .dropdown-menu {
+    position: absolute !important;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  .tree {
+    margin-left: 20px;
+  }
+
+  .tree-edit-btn, .tree-remove-btn {
+    display: none;
+  }
+
+  .tree-item {
+    padding: 2px 0;
+
+    &.drop-allowed {
+      .tree-item-name {
+        background-color: rgba(255, 0, 0, 0.3);
+      }
+    }
+
+    &.tree-item-selected {
+      > .tree-item-name {
+        padding: 0 1px;
+        border: 1px solid $colorBorder;
+        background-color: $colorSelected;
+      }
+    }
+
+    i {
+      text-align: center;
+    }
+
+    .no-children {
+      display: inline-block;
+      width: $iconWidth;
+    }
+
+    .tree-item-name {
+      display: inline-block;
+      line-height: 22px;
+      height: 22px;
+      padding: 0 2px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $colorHover;
+
+        .tree-edit-btn, .tree-remove-btn {
+          display: inline-block;
+        }
+      }
+    }
+
+    form {
+      display: inline-block;
+
+      input {
+        width: auto;
+      }
+    }
+  }
+}

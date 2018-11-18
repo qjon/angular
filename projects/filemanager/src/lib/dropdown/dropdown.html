@@ -1,0 +1,20 @@
+<div class="btn-group dropdown" [ngClass]="{'show': isOpen}">
+  <button class="btn btn-secondary" [ngClass]="{disabled: mainButton.disabled}" (click)="selectButton(mainButton)">
+    <span *ngIf="displayMainButtonLabel">{{mainButton.name}}</span>
+    <i *ngIf="mainButton.icon" class="{{mainButton.iconCssClass}}"></i>
+  </button><!--
+  --><button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuButton"
+          [ngClass]="{disabled: mainButton.disabled}"
+          (click)="toggleOpen()">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="single-button" (mouseleave)="hide()"
+      [ngClass]="{'show': isOpen}">
+    <li class=""
+        [ngClass]="{'dropdown-divider': button.isDivider(), 'dropdown-item': !button.isDivider(), disabled: button.disabled}"
+        *ngFor="let button of buttons " (click)="selectButton(button)">
+      <span *ngIf="button.icon" class="{{button.iconCssClass}}"></span>
+      <span *ngIf="button.label">{{button.name | translate}}</span>
+    </li>
+  </ul>
+</div>

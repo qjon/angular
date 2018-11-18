@@ -1,0 +1,16 @@
+.tree-item {
+  margin: 10px 0;
+  padding: 10px 5px;
+  line-height: 30px;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: #eee;
+
+  &.drop-enabled {
+    background-color: red;
+  }
+
+  &.tree-item-selected {
+    background-color: orange;
+  }
+}

@@ -1,0 +1,9 @@
+<ri-tree [treeModel]="treeModel">
+  <new-tree-item class="root-node"
+                 *ngFor="let node of treeModel.rootNodes$ | async; trackBy: trackByFn"
+                 [node]="node"
+                 [treeModel]="treeModel"
+                 [isExpanded]="treeModel.isExpanded(node)"
+                 [isSelected]="treeModel.isSelected(node)"
+                 [contextMenu]="contextMenu"></new-tree-item>
+</ri-tree>

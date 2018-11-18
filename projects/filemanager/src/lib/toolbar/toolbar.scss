@@ -1,0 +1,27 @@
+.toolbar {
+  margin-bottom: 10px;
+}
+
+.btn {
+  height: 34px;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+.hidden-input-file {
+  visibility: hidden;
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  border: none;
+  margin: 0;
+  padding: 0
+}
+
+.btn-group, ri-selection-dropdown {
+  padding: 0 2px 0 0;
+}

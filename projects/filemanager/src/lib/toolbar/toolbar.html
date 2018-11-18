@@ -1,0 +1,29 @@
+<div class="toolbar row">
+  <div class="col-md-6">
+    <div class="btn-group">
+      <button class="btn btn-secondary" (click)="addFolder()">
+        <i class="fa fa-plus"></i>
+        <i class="fa fa-folder-o"></i>
+      </button>
+      <span class="hidden-input-file">
+        <input #fileInput type="file" ng2FileSelect [uploader]="fileManagerUploader.uploader" multiple/>
+      </span>
+      <button class="btn btn-secondary" (click)="fileInput.click()">
+        <i class="fa fa-plus"></i>
+        <i class="fa fa-file-o"></i>
+      </button>
+    </div>
+    <ri-selection-dropdown (onMenuButtonClick)="onMenuButtonClick.next($event)"></ri-selection-dropdown>
+    <div class="btn-group">
+      <button class="btn btn-secondary" (click)="onRefreshFilesList()">
+        <i class="fa fa-refresh"></i>
+      </button>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <ri-file-type-filter [typeFilterList]="configuration.fileTypesFilter"></ri-file-type-filter>
+  </div>
+  <div class="col-md-3">
+    <ri-search-file></ri-search-file>
+  </div>
+</div>

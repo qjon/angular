@@ -1,0 +1,18 @@
+$height: 34px;
+
+.dropdown {
+  display: inline-block;
+  height: $height;
+
+  .btn {
+    height: $height;
+  }
+
+  li {
+    cursor: pointer;
+
+    &:hover:not(.disabled) {
+      background: rgba(0, 123, 255, 0.45);
+    }
+  }
+}

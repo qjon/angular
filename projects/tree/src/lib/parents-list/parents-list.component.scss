@@ -1,0 +1,24 @@
+.ri-tree-parents-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    cursor: pointer;
+    color: #777777;
+
+    &:last-child, &:first-child, &:after {
+      color: #000000;
+    }
+
+    &:not(:last-child) {
+      &:after {
+        content: '/';
+        display: inline-block;
+        width: 10px;
+        text-align: center;
+      }
+    }
+  }
+}

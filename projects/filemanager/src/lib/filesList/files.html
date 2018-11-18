@@ -1,0 +1,5 @@
+<div class="files-list">
+  <div class="file" *ngFor="let file of files" [ngClass]="{'selected': isSelected(file)}"  riDraggable [data]="file.toJSON()" [sourceType]="'FILE'" [dragZone]="dragZone">
+    <ri-file-component [file]="file" (onPreviewFile)="openPreview($event)" (onCropFile)="openCrop($event)"></ri-file-component>
+  </div>
+</div>
