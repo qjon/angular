@@ -10,6 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "gh-pages": "ng build --prod --base-href \"https://qjon.github.io/angular/\" &&  ./node_modules/.bin/angular-cli-ghpages -b gh-pages  --name=\"Rafał Ignaszewski\" --email=\"rafal@ignaszewski.pl\" --no-silent",
     "e2e:tree": "ng e2e --project=tree-example-e2e"
   },
   "private": true,

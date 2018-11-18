@@ -1,4 +1,4 @@
-# angular2-tree
+# Aangular Tree Component
 
 Simple component to display tree structure
 
@@ -10,7 +10,7 @@ Simple component to display tree structure
 
 ## Installation
 
-    npm i @rign/angular2-tree
+    npm i @rign/angular2-tree --save
    
 
 ## Usage    
@@ -274,6 +274,7 @@ At the end do not forget to add this effects to your app.
 * switch from ng2-translate to ngx-translate
 * replace LESS to SCSS
 * move to new repository
+* remove deprecated code
 
 ### v3.1.2
 * fix Item template error 
@@ -323,7 +324,7 @@ At the end do not forget to add this effects to your app.
 * add possibility to animate action _collapse_ and _expand_ nodes of tree, using in configuration property _isAnimation: true_
 
 ### v2.0.1
-* add [MIT LICENSE](https://github.com/qjon/angular2-tree/blob/master/LICENSE)
+* add [MIT LICENSE](https://github.com/qjon/angular/blob/master/projects/tree/LICENSE)
 
 ### v2.0.0
 * use ngrx/store to store data
@@ -374,23 +375,11 @@ At the end do not forget to add this effects to your app.
 
 ## Demo
 
-Working demo with _local storage_ you can find [here](https://qjon.github.io/angular2-tree/).
+Working demo with _local storage_ you can find [here](https://qjon.github.io/angular/tree).
 To run Demo locally clone this repository and run
 
-    npm start
+    ng start --project=tree-example
     
-If you would like to use demo with real API then you have to make small change. 
-In _demo/srx/app/treeTwo.component.ts_ change injection from _TreeTwoNodeService_ to _TreeTwoNodeBackendService_.  
-Then run real backend written in NestJS
-
-    cd backend
-    npm install
-    npm start
-    
-and in second terminal run tree application
-
-    npm start
-
 ## License
 
-Licensed under [MIT](https://github.com/qjon/angular2-tree/blob/master/LICENSE).
+Licensed under [MIT](https://github.com/qjon/angular/blob/master/projects/tree/LICENSE).

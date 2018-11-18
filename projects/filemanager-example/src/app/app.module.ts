@@ -12,7 +12,7 @@ import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {TreeModule} from '@rign/angular2-tree';
 import {ContextMenuModule} from 'ngx-contextmenu';
 import {DndModule} from 'ng2-dnd';
-import {SimpleNotificationsComponent, SimpleNotificationsModule} from 'angular2-notifications';
+import {SimpleNotificationsModule} from 'angular2-notifications';
 
 
 const fileManagerConfiguration: IFileManagerConfiguration = {
