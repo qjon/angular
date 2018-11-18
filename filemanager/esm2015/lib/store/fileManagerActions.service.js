@@ -1,0 +1,346 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+import { Injectable } from '@angular/core';
+/**
+ * @record
+ */
+export function IFileManagerPayloadData() { }
+if (false) {
+    /** @type {?|undefined} */
+    IFileManagerPayloadData.prototype.folderId;
+    /** @type {?|undefined} */
+    IFileManagerPayloadData.prototype.files;
+    /** @type {?|undefined} */
+    IFileManagerPayloadData.prototype.file;
+    /** @type {?|undefined} */
+    IFileManagerPayloadData.prototype.fileIds;
+    /** @type {?|undefined} */
+    IFileManagerPayloadData.prototype.bounds;
+}
+/**
+ * @record
+ */
+export function IFileManagerAction() { }
+if (false) {
+    /** @type {?} */
+    IFileManagerAction.prototype.payload;
+}
+/**
+ * \@Deprecated - Will be removed in 3.0.0
+ */
+export class FileManagerActionsService {
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new ChooseFilesAction() instead of it
+     * @param {?} files
+     * @return {?}
+     */
+    chooseFiles(files) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_CHOOSE_FILES,
+            payload: { files }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new CropFileAction() instead of it
+     * @param {?} file
+     * @param {?} bounds
+     * @return {?}
+     */
+    cropFile(file, bounds) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_CROP_FILE,
+            payload: {
+                file: file,
+                bounds: bounds
+            }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new CropFileSuccessAction() instead of it
+     * @param {?} file
+     * @return {?}
+     */
+    cropFileSuccess(file) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_CROP_FILE_SUCCESS,
+            payload: {
+                file: file
+            }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new CropFileErrorAction() instead of it
+     * @param {?} file
+     * @return {?}
+     */
+    cropFileError(file) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_CROP_FILE_ERROR,
+            payload: {
+                file: file
+            }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new DeleteFileAction() instead of it
+     * @param {?} file
+     * @return {?}
+     */
+    deleteFile(file) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_DELETE_FILE,
+            payload: {
+                file: file
+            }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new DeleteFileSuccessAction() instead of it
+     * @param {?} file
+     * @return {?}
+     */
+    deleteFileSuccess(file) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_DELETE_FILE_SUCCESS,
+            payload: {
+                file: file
+            }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new DeleteSelectedFilesAction() instead of it
+     * @param {?} fileIds
+     * @return {?}
+     */
+    deleteSelectedFiles(fileIds) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_DELETE_FILE_SELECTION,
+            payload: { fileIds }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new DeleteSelectedFilesSuccessAction() instead of it
+     * @param {?} files
+     * @return {?}
+     */
+    deleteSelectedFilesSuccess(files) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_DELETE_FILE_SELECTION_SUCCESS,
+            payload: { files }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new LoadFilesAction() instead of it
+     * @param {?} folderId
+     * @return {?}
+     */
+    loadFiles(folderId) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_LOAD_FILES,
+            payload: {
+                folderId: folderId
+            }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new InverseFilesSelectionAction() instead of it
+     * @return {?}
+     */
+    inverseFileSelection() {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_INVERSE_FILE_SELECTION,
+            payload: {}
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new LoadFilesSuccessAction() instead of it
+     * @param {?} folderId
+     * @param {?} files
+     * @return {?}
+     */
+    loadFilesSuccess(folderId, files) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_LOAD_FILES_SUCCESS,
+            payload: {
+                folderId: folderId,
+                files: files
+            }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new MoveFilesSuccessAction() instead of it
+     * @param {?} files
+     * @param {?} folderId
+     * @return {?}
+     */
+    moveFileSuccess(files, folderId) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_MOVE_FILES_SUCCESS,
+            payload: { folderId, files }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new MoveFilesErrorAction() instead of it
+     * @param {?} files
+     * @return {?}
+     */
+    moveFileError(files) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_MOVE_FILES_ERROR,
+            payload: { files }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new SelectAllFilesAction() instead of it
+     * @return {?}
+     */
+    selectAllFiles() {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_SELECT_ALL,
+            payload: {}
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new SelectFileAction() instead of it
+     * @param {?} file
+     * @return {?}
+     */
+    selectFile(file) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_SELECT_FILE,
+            payload: {
+                file: file
+            }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new UnSelectAllFilesAction() instead of it
+     * @return {?}
+     */
+    unSelectAll() {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_UNSELECT_ALL,
+            payload: {}
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new UnSelectFileAction() instead of it
+     * @param {?} file
+     * @return {?}
+     */
+    unSelectFile(file) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_UNSELECT_FILE,
+            payload: {
+                file: file
+            }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new UploadFilesAction() instead of it
+     * @param {?} file
+     * @return {?}
+     */
+    upload(file) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_UPLOAD_FILE,
+            payload: {
+                files: [file]
+            }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new UploadFilesSuccessAction() instead of it
+     * @param {?} file
+     * @return {?}
+     */
+    uploadSuccess(file) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_UPLOAD_FILE_SUCCESS,
+            payload: {
+                files: [file]
+            }
+        };
+    }
+    /**
+     * \@Deprecated - Will be removed in 3.0.0, use new UploadFilesErrorAction() instead of it
+     * @param {?} file
+     * @return {?}
+     */
+    uploadError(file) {
+        return {
+            type: FileManagerActionsService.FILEMANAGER_UPLOAD_FILE_ERROR,
+            payload: {
+                files: [file]
+            }
+        };
+    }
+}
+FileManagerActionsService.FILEMANAGER_CHOOSE_FILES = 'FILEMANAGER_CHOOSE_FILES';
+FileManagerActionsService.FILEMANAGER_CROP_FILE = 'FILEMANAGER_CROP_FILE';
+FileManagerActionsService.FILEMANAGER_CROP_FILE_SUCCESS = 'FILEMANAGER_CROP_FILE_SUCCESS';
+FileManagerActionsService.FILEMANAGER_CROP_FILE_ERROR = 'FILEMANAGER_CROP_FILE_ERROR';
+FileManagerActionsService.FILEMANAGER_DELETE_FILE = 'FILEMANAGER_DELETE_FILE';
+FileManagerActionsService.FILEMANAGER_DELETE_FILE_SUCCESS = 'FILEMANAGER_DELETE_FILE_SUCCESS';
+FileManagerActionsService.FILEMANAGER_DELETE_FILE_SELECTION = 'FILEMANAGER_DELETE_FILE_SELECTION';
+FileManagerActionsService.FILEMANAGER_DELETE_FILE_SELECTION_SUCCESS = 'FILEMANAGER_DELETE_FILE_SELECTION_SUCCESS';
+FileManagerActionsService.FILEMANAGER_INVERSE_FILE_SELECTION = 'FILEMANAGER_INVERSE_FILE_SELECTION';
+FileManagerActionsService.FILEMANAGER_LOAD_FILES = 'FILEMANAGER_LOAD_FILES';
+FileManagerActionsService.FILEMANAGER_LOAD_FILES_SUCCESS = 'FILEMANAGER_LOAD_FILES_SUCCESS';
+FileManagerActionsService.FILEMANAGER_MOVE_FILES_SUCCESS = 'FILEMANAGER_MOVE_FILES_SUCCESS';
+FileManagerActionsService.FILEMANAGER_MOVE_FILES_ERROR = 'FILEMANAGER_MOVE_FILES_ERROR';
+FileManagerActionsService.FILEMANAGER_SELECT_ALL = 'FILEMANAGER_SELECT_ALL';
+FileManagerActionsService.FILEMANAGER_SELECT_FILE = 'FILEMANAGER_SELECT_FILE';
+FileManagerActionsService.FILEMANAGER_UNSELECT_FILE = 'FILEMANAGER_UNSELECT_FILE';
+FileManagerActionsService.FILEMANAGER_UNSELECT_ALL = 'FILEMANAGER_UNSELECT_ALL';
+FileManagerActionsService.FILEMANAGER_UPLOAD_FILE = 'FILEMANAGER_UPLOAD_FILE';
+FileManagerActionsService.FILEMANAGER_UPLOAD_FILE_ERROR = 'FILEMANAGER_UPLOAD_FILE_ERROR';
+FileManagerActionsService.FILEMANAGER_UPLOAD_FILE_SUCCESS = 'FILEMANAGER_UPLOAD_FILE_SUCCESS';
+FileManagerActionsService.decorators = [
+    { type: Injectable }
+];
+if (false) {
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_CHOOSE_FILES;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_CROP_FILE;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_CROP_FILE_SUCCESS;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_CROP_FILE_ERROR;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_DELETE_FILE;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_DELETE_FILE_SUCCESS;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_DELETE_FILE_SELECTION;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_DELETE_FILE_SELECTION_SUCCESS;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_INVERSE_FILE_SELECTION;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_LOAD_FILES;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_LOAD_FILES_SUCCESS;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_MOVE_FILES_SUCCESS;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_MOVE_FILES_ERROR;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_SELECT_ALL;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_SELECT_FILE;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_UNSELECT_FILE;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_UNSELECT_ALL;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_UPLOAD_FILE;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_UPLOAD_FILE_ERROR;
+    /** @type {?} */
+    FileManagerActionsService.FILEMANAGER_UPLOAD_FILE_SUCCESS;
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZmlsZU1hbmFnZXJBY3Rpb25zLnNlcnZpY2UuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9Acmlnbi9hbmd1bGFyMi1maWxlbWFuYWdlci8iLCJzb3VyY2VzIjpbImxpYi9zdG9yZS9maWxlTWFuYWdlckFjdGlvbnMuc2VydmljZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsT0FBTyxFQUFDLFVBQVUsRUFBQyxNQUFNLGVBQWUsQ0FBQzs7OztBQU16Qyw2Q0FNQzs7O0lBTEMsMkNBQWtCOztJQUNsQix3Q0FBcUI7O0lBQ3JCLHVDQUFrQjs7SUFDbEIsMENBQW1COztJQUNuQix5Q0FBcUI7Ozs7O0FBR3ZCLHdDQUVDOzs7SUFEQyxxQ0FBaUM7Ozs7O0FBT25DLE1BQU0sT0FBTyx5QkFBeUI7Ozs7OztJQTBCN0IsV0FBVyxDQUFDLEtBQW1CO1FBQ3BDLE9BQU87WUFDTCxJQUFJLEVBQUUseUJBQXlCLENBQUMsd0JBQXdCO1lBQ3hELE9BQU8sRUFBRSxFQUFDLEtBQUssRUFBQztTQUNqQixDQUFDO0lBQ0osQ0FBQzs7Ozs7OztJQUtNLFFBQVEsQ0FBQyxJQUFnQixFQUFFLE1BQW1CO1FBQ25ELE9BQU87WUFDTCxJQUFJLEVBQUUseUJBQXlCLENBQUMscUJBQXFCO1lBQ3JELE9BQU8sRUFBRTtnQkFDUCxJQUFJLEVBQUUsSUFBSTtnQkFDVixNQUFNLEVBQUUsTUFBTTthQUNmO1NBQ0YsQ0FBQztJQUNKLENBQUM7Ozs7OztJQUtNLGVBQWUsQ0FBQyxJQUFnQjtRQUNyQyxPQUFPO1lBQ0wsSUFBSSxFQUFFLHlCQUF5QixDQUFDLDZCQUE2QjtZQUM3RCxPQUFPLEVBQUU7Z0JBQ1AsSUFBSSxFQUFFLElBQUk7YUFDWDtTQUNGLENBQUM7SUFDSixDQUFDOzs7Ozs7SUFLTSxhQUFhLENBQUMsSUFBZ0I7UUFDbkMsT0FBTztZQUNMLElBQUksRUFBRSx5QkFBeUIsQ0FBQywyQkFBMkI7WUFDM0QsT0FBTyxFQUFFO2dCQUNQLElBQUksRUFBRSxJQUFJO2FBQ1g7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QyxDQUFDOztZQXJCNUUsVUFBVTs7OztJQUVULG1EQUE2RDs7SUFDN0QsZ0RBQXVEOztJQUN2RCx3REFBdUU7O0lBQ3ZFLHNEQUFtRTs7SUFDbkUsa0RBQTJEOztJQUMzRCwwREFBMkU7O0lBQzNFLDREQUErRTs7SUFDL0Usb0VBQStGOztJQUMvRiw2REFBaUY7O0lBQ2pGLGlEQUF5RDs7SUFDekQseURBQXlFOztJQUN6RSx5REFBeUU7O0lBQ3pFLHVEQUFxRTs7SUFDckUsaURBQXlEOztJQUN6RCxrREFBMkQ7O0lBQzNELG9EQUErRDs7SUFDL0QsbURBQTZEOztJQUM3RCxrREFBMkQ7O0lBQzNELHdEQUF1RTs7SUFDdkUsMERBQTJFIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtJbmplY3RhYmxlfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7QWN0aW9ufSBmcm9tICdAbmdyeC9zdG9yZSc7XG5pbXBvcnQge0lPdXRlckZpbGV9IGZyb20gJy4uL2ZpbGVzTGlzdC9pbnRlcmZhY2UvSU91dGVyRmlsZSc7XG5pbXBvcnQge0lGaWxlTW9kZWx9IGZyb20gJy4uL2ZpbGVzTGlzdC9pbnRlcmZhY2UvSUZpbGVNb2RlbCc7XG5pbXBvcnQge0lDcm9wQm91bmRzfSBmcm9tICcuLi9jcm9wL0lDcm9wQm91bmRzJztcblxuZXhwb3J0IGludGVyZmFjZSBJRmlsZU1hbmFnZXJQYXlsb2FkRGF0YSB7XG4gIGZvbGRlcklkPzogc3RyaW5nO1xuICBmaWxlcz86IElPdXRlckZpbGVbXTtcbiAgZmlsZT86IElGaWxlTW9kZWw7XG4gIGZpbGVJZHM/OiBzdHJpbmdbXTtcbiAgYm91bmRzPzogSUNyb3BCb3VuZHM7XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgSUZpbGVNYW5hZ2VyQWN0aW9uIGV4dGVuZHMgQWN0aW9uIHtcbiAgcGF5bG9hZDogSUZpbGVNYW5hZ2VyUGF5bG9hZERhdGE7XG59XG5cbi8qKlxuICogQERlcHJlY2F0ZWQgLSBXaWxsIGJlIHJlbW92ZWQgaW4gMy4wLjBcbiAqL1xuQEluamVjdGFibGUoKVxuZXhwb3J0IGNsYXNzIEZpbGVNYW5hZ2VyQWN0aW9uc1NlcnZpY2Uge1xuICBzdGF0aWMgRklMRU1BTkFHRVJfQ0hPT1NFX0ZJTEVTID0gJ0ZJTEVNQU5BR0VSX0NIT09TRV9GSUxFUyc7XG4gIHN0YXRpYyBGSUxFTUFOQUdFUl9DUk9QX0ZJTEUgPSAnRklMRU1BTkFHRVJfQ1JPUF9GSUxFJztcbiAgc3RhdGljIEZJTEVNQU5BR0VSX0NST1BfRklMRV9TVUNDRVNTID0gJ0ZJTEVNQU5BR0VSX0NST1BfRklMRV9TVUNDRVNTJztcbiAgc3RhdGljIEZJTEVNQU5BR0VSX0NST1BfRklMRV9FUlJPUiA9ICdGSUxFTUFOQUdFUl9DUk9QX0ZJTEVfRVJST1InO1xuICBzdGF0aWMgRklMRU1BTkFHRVJfREVMRVRFX0ZJTEUgPSAnRklMRU1BTkFHRVJfREVMRVRFX0ZJTEUnO1xuICBzdGF0aWMgRklMRU1BTkFHRVJfREVMRVRFX0ZJTEVfU1VDQ0VTUyA9ICdGSUxFTUFOQUdFUl9ERUxFVEVfRklMRV9TVUNDRVNTJztcbiAgc3RhdGljIEZJTEVNQU5BR0VSX0RFTEVURV9GSUxFX1NFTEVDVElPTiA9ICdGSUxFTUFOQUdFUl9ERUxFVEVfRklMRV9TRUxFQ1RJT04nO1xuICBzdGF0aWMgRklMRU1BTkFHRVJfREVMRVRFX0ZJTEVfU0VMRUNUSU9OX1NVQ0NFU1MgPSAnRklMRU1BTkFHRVJfREVMRVRFX0ZJTEVfU0VMRUNUSU9OX1NVQ0NFU1MnO1xuICBzdGF0aWMgRklMRU1BTkFHRVJfSU5WRVJTRV9GSUxFX1NFTEVDVElPTiA9ICdGSUxFTUFOQUdFUl9JTlZFUlNFX0ZJTEVfU0VMRUNUSU9OJztcbiAgc3RhdGljIEZJTEVNQU5BR0VSX0xPQURfRklMRVMgPSAnRklMRU1BTkFHRVJfTE9BRF9GSUxFUyc7XG4gIHN0YXRpYyBGSUxFTUFOQUdFUl9MT0FEX0ZJTEVTX1NVQ0NFU1MgPSAnRklMRU1BTkFHRVJfTE9BRF9GSUxFU19TVUNDRVNTJztcbiAgc3RhdGljIEZJTEVNQU5BR0VSX01PVkVfRklMRVNfU1VDQ0VTUyA9ICdGSUxFTUFOQUdFUl9NT1ZFX0ZJTEVTX1NVQ0NFU1MnO1xuICBzdGF0aWMgRklMRU1BTkFHRVJfTU9WRV9GSUxFU19FUlJPUiA9ICdGSUxFTUFOQUdFUl9NT1ZFX0ZJTEVTX0VSUk9SJztcbiAgc3RhdGljIEZJTEVNQU5BR0VSX1NFTEVDVF9BTEwgPSAnRklMRU1BTkFHRVJfU0VMRUNUX0FMTCc7XG4gIHN0YXRpYyBGSUxFTUFOQUdFUl9TRUxFQ1RfRklMRSA9ICdGSUxFTUFOQUdFUl9TRUxFQ1RfRklMRSc7XG4gIHN0YXRpYyBGSUxFTUFOQUdFUl9VTlNFTEVDVF9GSUxFID0gJ0ZJTEVNQU5BR0VSX1VOU0VMRUNUX0ZJTEUnO1xuICBzdGF0aWMgRklMRU1BTkFHRVJfVU5TRUxFQ1RfQUxMID0gJ0ZJTEVNQU5BR0VSX1VOU0VMRUNUX0FMTCc7XG4gIHN0YXRpYyBGSUxFTUFOQUdFUl9VUExPQURfRklMRSA9ICdGSUxFTUFOQUdFUl9VUExPQURfRklMRSc7XG4gIHN0YXRpYyBGSUxFTUFOQUdFUl9VUExPQURfRklMRV9FUlJPUiA9ICdGSUxFTUFOQUdFUl9VUExPQURfRklMRV9FUlJPUic7XG4gIHN0YXRpYyBGSUxFTUFOQUdFUl9VUExPQURfRklMRV9TVUNDRVNTID0gJ0ZJTEVNQU5BR0VSX1VQTE9BRF9GSUxFX1NVQ0NFU1MnO1xuXG5cbiAgLyoqXG4gICAqIEBEZXByZWNhdGVkIC0gV2lsbCBiZSByZW1vdmVkIGluIDMuMC4wLCB1c2UgbmV3IENob29zZUZpbGVzQWN0aW9uKCkgaW5zdGVhZCBvZiBpdFxuICAgKi9cbiAgcHVibGljIGNob29zZUZpbGVzKGZpbGVzOiBJT3V0ZXJGaWxlW10pOiBJRmlsZU1hbmFnZXJBY3Rpb24ge1xuICAgIHJldHVybiB7XG4gICAgICB0eXBlOiBGaWxlTWFuYWdlckFjdGlvbnNTZXJ2aWNlLkZJTEVNQU5BR0VSX0NIT09TRV9GSUxFUyxcbiAgICAgIHBheWxvYWQ6IHtmaWxlc31cbiAgICB9O1xuICB9XG5cbiAgLyoqXG4gICAqIEBEZXByZWNhdGVkIC0gV2lsbCBiZSByZW1vdmVkIGluIDMuMC4wLCB1c2UgbmV3IENyb3BGaWxlQWN0aW9uKCkgaW5zdGVhZCBvZiBpdFxuICAgKi9cbiAgcHVibGljIGNyb3BGaWxlKGZpbGU6IElGaWxlTW9kZWwsIGJvdW5kczogSUNyb3BCb3VuZHMpOiBJRmlsZU1hbmFnZXJBY3Rpb24ge1xuICAgIHJldHVybiB7XG4gICAgICB0eXBlOiBGaWxlTWFuYWdlckFjdGlvbnNTZXJ2aWNlLkZJTEVNQU5BR0VSX0NST1BfRklMRSxcbiAgICAgIHBheWxvYWQ6IHtcbiAgICAgICAgZmlsZTogZmlsZSxcbiAgICAgICAgYm91bmRzOiBib3VuZHNcbiAgICAgIH1cbiAgICB9O1xuICB9XG5cbiAgLyoqXG4gICAqIEBEZXByZWNhdGVkIC0gV2lsbCBiZSByZW1vdmVkIGluIDMuMC4wLCB1c2UgbmV3IENyb3BGaWxlU3VjY2Vzc0FjdGlvbigpIGluc3RlYWQgb2YgaXRcbiAgICovXG4gIHB1YmxpYyBjcm9wRmlsZVN1Y2Nlc3MoZmlsZTogSUZpbGVNb2RlbCk6IElGaWxlTWFuYWdlckFjdGlvbiB7XG4gICAgcmV0dXJuIHtcbiAgICAgIHR5cGU6IEZpbGVNYW5hZ2VyQWN0aW9uc1NlcnZpY2UuRklMRU1BTkFHRVJfQ1JPUF9GSUxFX1NVQ0NFU1MsXG4gICAgICBwYXlsb2FkOiB7XG4gICAgICAgIGZpbGU6IGZpbGVcbiAgICAgIH1cbiAgICB9O1xuICB9XG5cbiAgLyoqXG4gICAqIEBEZXByZWNhdGVkIC0gV2lsbCBiZSByZW1vdmVkIGluIDMuMC4wLCB1c2UgbmV3IENyb3BGaWxlRXJyb3JBY3Rpb24oKSBpbnN0ZWFkIG9mIGl0XG4gICAqL1xuICBwdWJsaWMgY3JvcEZpbGVFcnJvcihmaWxlOiBJRmlsZU1vZGVsKTogSUZpbGVNYW5hZ2VyQWN0aW9uIHtcbiAgICByZXR1cm4ge1xuICAgICAgdHlwZTogRmlsZU1hbmFnZXJBY3Rpb25zU2VydmljZS5GSUxFTUFOQUdFUl9DUk9QX0ZJTEVfRVJST1IsXG4gICAgICBwYXlsb2FkOiB7XG4gICAgICAgIGZpbGU6IGZpbGVcbiAgICAgIH1cbiAgICB9O1xuICB9XG5cbiAgLyoqXG4gICAqIEBEZXByZWNhdGVkIC0gV2lsbCBiZSByZW1vdmVkIGluIDMuMC4wLCB1c2UgbmV3IERlbGV0ZUZpbGVBY3Rpb24oKSBpbnN0ZWFkIG9mIGl0XG4gICAqL1xuICBwdWJsaWMgZGVsZXRlRmlsZShmaWxlOiBJRmlsZU1vZGVsKTogSUZpbGVNYW5hZ2VyQWN0aW9uIHtcbiAgICByZXR1cm4ge1xuICAgICAgdHlwZTogRmlsZU1hbmFnZXJBY3Rpb25zU2VydmljZS5GSUxFTUFOQUdFUl9ERUxFVEVfRklMRSxcbiAgICAgIHBheWxvYWQ6IHtcbiAgICAgICAgZmlsZTogZmlsZVxuICAgICAgfVxuICAgIH07XG4gIH1cblxuICAvKipcbiAgICogQERlcHJlY2F0ZWQgLSBXaWxsIGJlIHJlbW92ZWQgaW4gMy4wLjAsIHVzZSBuZXcgRGVsZXRlRmlsZVN1Y2Nlc3NBY3Rpb24oKSBpbnN0ZWFkIG9mIGl0XG4gICAqL1xuICBwdWJsaWMgZGVsZXRlRmlsZVN1Y2Nlc3MoZmlsZTogSUZpbGVNb2RlbCk6IElGaWxlTWFuYWdlckFjdGlvbiB7XG4gICAgcmV0dXJuIHtcbiAgICAgIHR5cGU6IEZpbGVNYW5hZ2VyQWN0aW9uc1NlcnZpY2UuRklMRU1BTkFHRVJfREVMRVRFX0ZJTEVfU1VDQ0VTUyxcbiAgICAgIHBheWxvYWQ6IHtcbiAgICAgICAgZmlsZTogZmlsZVxuICAgICAgfVxuICAgIH07XG4gIH1cblxuICAvKipcbiAgICogQERlcHJlY2F0ZWQgLSBXaWxsIGJlIHJlbW92ZWQgaW4gMy4wLjAsIHVzZSBuZXcgRGVsZXRlU2VsZWN0ZWRGaWxlc0FjdGlvbigpIGluc3RlYWQgb2YgaXRcbiAgICovXG4gIHB1YmxpYyBkZWxldGVTZWxlY3RlZEZpbGVzKGZpbGVJZHM6IHN0cmluZ1tdKTogSUZpbGVNYW5hZ2VyQWN0aW9uIHtcbiAgICByZXR1cm4ge1xuICAgICAgdHlwZTogRmlsZU1hbmFnZXJBY3Rpb25zU2VydmljZS5GSUxFTUFOQUdFUl9ERUxFVEVfRklMRV9TRUxFQ1RJT04sXG4gICAgICBwYXlsb2FkOiB7ZmlsZUlkc31cbiAgICB9O1xuICB9XG5cbiAgLyoqXG4gICAqIEBEZXByZWNhdGVkIC0gV2lsbCBiZSByZW1vdmVkIGluIDMuMC4wLCB1c2UgbmV3IERlbGV0ZVNlbGVjdGVkRmlsZXNTdWNjZXNzQWN0aW9uKCkgaW5zdGVhZCBvZiBpdFxuICAgKi9cbiAgcHVibGljIGRlbGV0ZVNlbGVjdGVkRmlsZXNTdWNjZXNzKGZpbGVzOiBJT3V0ZXJGaWxlW10pOiBJRmlsZU1hbmFnZXJBY3Rpb24ge1xuICAgIHJldHVybiB7XG4gICAgICB0eXBlOiBGaWxlTWFuYWdlckFjdGlvbnNTZXJ2aWNlLkZJTEVNQU5BR0VSX0RFTEVURV9GSUxFX1NFTEVDVElPTl9TVUNDRVNTLFxuICAgICAgcGF5bG9hZDoge2ZpbGVzfVxuICAgIH07XG4gIH1cblxuICAvKipcbiAgICogQERlcHJlY2F0ZWQgLSBXaWxsIGJlIHJlbW92ZWQgaW4gMy4wLjAsIHVzZSBuZXcgTG9hZEZpbGVzQWN0aW9uKCkgaW5zdGVhZCBvZiBpdFxuICAgKi9cbiAgcHVibGljIGxvYWRGaWxlcyhmb2xkZXJJZDogc3RyaW5nKTogSUZpbGVNYW5hZ2VyQWN0aW9uIHtcbiAgICByZXR1cm4ge1xuICAgICAgdHlwZTogRmlsZU1hbmFnZXJBY3Rpb25zU2VydmljZS5GSUxFTUFOQUdFUl9MT0FEX0ZJTEVTLFxuICAgICAgcGF5bG9hZDoge1xuICAgICAgICBmb2xkZXJJZDogZm9sZGVySWRcbiAgICAgIH1cbiAgICB9O1xuICB9XG5cbiAgLyoqXG4gICAqIEBEZXByZWNhdGVkIC0gV2lsbCBiZSByZW1vdmVkIGluIDMuMC4wLCB1c2UgbmV3IEludmVyc2VGaWxlc1NlbGVjdGlvbkFjdGlvbigpIGluc3RlYWQgb2YgaXRcbiAgICovXG4gIHB1YmxpYyBpbnZlcnNlRmlsZVNlbGVjdGlvbigpOiBJRmlsZU1hbmFnZXJBY3Rpb24ge1xuICAgIHJldHVybiB7XG4gICAgICB0eXBlOiBGaWxlTWFuYWdlckFjdGlvbnNTZXJ2aWNlLkZJTEVNQU5BR0VSX0lOVkVSU0VfRklMRV9TRUxFQ1RJT04sXG4gICAgICBwYXlsb2FkOiB7fVxuICAgIH07XG4gIH1cblxuICAvKipcbiAgICogQERlcHJlY2F0ZWQgLSBXaWxsIGJlIHJlbW92ZWQgaW4gMy4wLjAsIHVzZSBuZXcgTG9hZEZpbGVzU3VjY2Vzc0FjdGlvbigpIGluc3RlYWQgb2YgaXRcbiAgICovXG4gIHB1YmxpYyBsb2FkRmlsZXNTdWNjZXNzKGZvbGRlcklkOiBzdHJpbmcsIGZpbGVzOiBJT3V0ZXJGaWxlW10pOiBJRmlsZU1hbmFnZXJBY3Rpb24ge1xuICAgIHJldHVybiB7XG4gICAgICB0eXBlOiBGaWxlTWFuYWdlckFjdGlvbnNTZXJ2aWNlLkZJTEVNQU5BR0VSX0xPQURfRklMRVNfU1VDQ0VTUyxcbiAgICAgIHBheWxvYWQ6IHtcbiAgICAgICAgZm9sZGVySWQ6IGZvbGRlcklkLFxuICAgICAgICBmaWxlczogZmlsZXNcbiAgICAgIH1cbiAgICB9O1xuICB9XG5cbiAgLyoqXG4gICAqIEBEZXByZWNhdGVkIC0gV2lsbCBiZSByZW1vdmVkIGluIDMuMC4wLCB1c2UgbmV3IE1vdmVGaWxlc1N1Y2Nlc3NBY3Rpb24oKSBpbnN0ZWFkIG9mIGl0XG4gICAqL1xuICBwdWJsaWMgbW92ZUZpbGVTdWNjZXNzKGZpbGVzOiBJT3V0ZXJGaWxlW10sIGZvbGRlcklkOiBzdHJpbmcpIHtcbiAgICByZXR1cm4ge1xuICAgICAgdHlwZTogRmlsZU1hbmFnZXJBY3Rpb25zU2VydmljZS5GSUxFTUFOQUdFUl9NT1ZFX0ZJTEVTX1NVQ0NFU1MsXG4gICAgICBwYXlsb2FkOiB7Zm9sZGVySWQsIGZpbGVzfVxuICAgIH07XG4gIH1cblxuICAvKipcbiAgICogQERlcHJlY2F0ZWQgLSBXaWxsIGJlIHJlbW92ZWQgaW4gMy4wLjAsIHVzZSBuZXcgTW92ZUZpbGVzRXJyb3JBY3Rpb24oKSBpbnN0ZWFkIG9mIGl0XG4gICAqL1xuICBwdWJsaWMgbW92ZUZpbGVFcnJvcihmaWxlczogSU91dGVyRmlsZVtdKTogSUZpbGVNYW5hZ2VyQWN0aW9uIHtcbiAgICByZXR1cm4ge1xuICAgICAgdHlwZTogRmlsZU1hbmFnZXJBY3Rpb25zU2VydmljZS5GSUxFTUFOQUdFUl9NT1ZFX0ZJTEVTX0VSUk9SLFxuICAgICAgcGF5bG9hZDoge2ZpbGVzfVxuICAgIH07XG4gIH1cblxuICAvKipcbiAgICogQERlcHJlY2F0ZWQgLSBXaWxsIGJlIHJlbW92ZWQgaW4gMy4wLjAsIHVzZSBuZXcgU2VsZWN0QWxsRmlsZXNBY3Rpb24oKSBpbnN0ZWFkIG9mIGl0XG4gICAqL1xuICBwdWJsaWMgc2VsZWN0QWxsRmlsZXMoKTogSUZpbGVNYW5hZ2VyQWN0aW9uIHtcbiAgICByZXR1cm4ge1xuICAgICAgdHlwZTogRmlsZU1hbmFnZXJBY3Rpb25zU2VydmljZS5GSUxFTUFOQUdFUl9TRUxFQ1RfQUxMLFxuICAgICAgcGF5bG9hZDoge31cbiAgICB9O1xuICB9XG5cbiAgLyoqXG4gICAqIEBEZXByZWNhdGVkIC0gV2lsbCBiZSByZW1vdmVkIGluIDMuMC4wLCB1c2UgbmV3IFNlbGVjdEZpbGVBY3Rpb24oKSBpbnN0ZWFkIG9mIGl0XG4gICAqL1xuICBwdWJsaWMgc2VsZWN0RmlsZShmaWxlOiBJRmlsZU1vZGVsKTogSUZpbGVNYW5hZ2VyQWN0aW9uIHtcbiAgICByZXR1cm4ge1xuICAgICAgdHlwZTogRmlsZU1hbmFnZXJBY3Rpb25zU2VydmljZS5GSUxFTUFOQUdFUl9TRUxFQ1RfRklMRSxcbiAgICAgIHBheWxvYWQ6IHtcbiAgICAgICAgZmlsZTogZmlsZVxuICAgICAgfVxuICAgIH07XG4gIH1cblxuICAvKipcbiAgICogQERlcHJlY2F0ZWQgLSBXaWxsIGJlIHJlbW92ZWQgaW4gMy4wLjAsIHVzZSBuZXcgVW5TZWxlY3RBbGxGaWxlc0FjdGlvbigpIGluc3RlYWQgb2YgaXRcbiAgICovXG4gIHB1YmxpYyB1blNlbGVjdEFsbCgpOiBJRmlsZU1hbmFnZXJBY3Rpb24ge1xuICAgIHJldHVybiB7XG4gICAgICB0eXBlOiBGaWxlTWFuYWdlckFjdGlvbnNTZXJ2aWNlLkZJTEVNQU5BR0VSX1VOU0VMRUNUX0FMTCxcbiAgICAgIHBheWxvYWQ6IHt9XG4gICAgfTtcbiAgfVxuXG4gIC8qKlxuICAgKiBARGVwcmVjYXRlZCAtIFdpbGwgYmUgcmVtb3ZlZCBpbiAzLjAuMCwgdXNlIG5ldyBVblNlbGVjdEZpbGVBY3Rpb24oKSBpbnN0ZWFkIG9mIGl0XG4gICAqL1xuICBwdWJsaWMgdW5TZWxlY3RGaWxlKGZpbGU6IElGaWxlTW9kZWwpOiBJRmlsZU1hbmFnZXJBY3Rpb24ge1xuICAgIHJldHVybiB7XG4gICAgICB0eXBlOiBGaWxlTWFuYWdlckFjdGlvbnNTZXJ2aWNlLkZJTEVNQU5BR0VSX1VOU0VMRUNUX0ZJTEUsXG4gICAgICBwYXlsb2FkOiB7XG4gICAgICAgIGZpbGU6IGZpbGVcbiAgICAgIH1cbiAgICB9O1xuICB9XG5cbiAgLyoqXG4gICAqIEBEZXByZWNhdGVkIC0gV2lsbCBiZSByZW1vdmVkIGluIDMuMC4wLCB1c2UgbmV3IFVwbG9hZEZpbGVzQWN0aW9uKCkgaW5zdGVhZCBvZiBpdFxuICAgKi9cbiAgcHVibGljIHVwbG9hZChmaWxlOiBJT3V0ZXJGaWxlKTogSUZpbGVNYW5hZ2VyQWN0aW9uIHtcbiAgICByZXR1cm4ge1xuICAgICAgdHlwZTogRmlsZU1hbmFnZXJBY3Rpb25zU2VydmljZS5GSUxFTUFOQUdFUl9VUExPQURfRklMRSxcbiAgICAgIHBheWxvYWQ6IHtcbiAgICAgICAgZmlsZXM6IFtmaWxlXVxuICAgICAgfVxuICAgIH07XG4gIH1cblxuICAvKipcbiAgICogQERlcHJlY2F0ZWQgLSBXaWxsIGJlIHJlbW92ZWQgaW4gMy4wLjAsIHVzZSBuZXcgVXBsb2FkRmlsZXNTdWNjZXNzQWN0aW9uKCkgaW5zdGVhZCBvZiBpdFxuICAgKi9cbiAgcHVibGljIHVwbG9hZFN1Y2Nlc3MoZmlsZTogSU91dGVyRmlsZSk6IElGaWxlTWFuYWdlckFjdGlvbiB7XG4gICAgcmV0dXJuIHtcbiAgICAgIHR5cGU6IEZpbGVNYW5hZ2VyQWN0aW9uc1NlcnZpY2UuRklMRU1BTkFHRVJfVVBMT0FEX0ZJTEVfU1VDQ0VTUyxcbiAgICAgIHBheWxvYWQ6IHtcbiAgICAgICAgZmlsZXM6IFtmaWxlXVxuICAgICAgfVxuICAgIH07XG4gIH1cblxuICAvKipcbiAgICogQERlcHJlY2F0ZWQgLSBXaWxsIGJlIHJlbW92ZWQgaW4gMy4wLjAsIHVzZSBuZXcgVXBsb2FkRmlsZXNFcnJvckFjdGlvbigpIGluc3RlYWQgb2YgaXRcbiAgICovXG4gIHB1YmxpYyB1cGxvYWRFcnJvcihmaWxlOiBJT3V0ZXJGaWxlKTogSUZpbGVNYW5hZ2VyQWN0aW9uIHtcbiAgICByZXR1cm4ge1xuICAgICAgdHlwZTogRmlsZU1hbmFnZXJBY3Rpb25zU2VydmljZS5GSUxFTUFOQUdFUl9VUExPQURfRklMRV9FUlJPUixcbiAgICAgIHBheWxvYWQ6IHtcbiAgICAgICAgZmlsZXM6IFtmaWxlXVxuICAgICAgfVxuICAgIH07XG4gIH1cbn1cbiJdfQ==

@@ -1,0 +1,30 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/*
+ * Public API Surface of tree
+ */
+export { NODE_DISPATCHER_TOKEN, TreeModule } from './lib/tree.module';
+export { TreeComponent } from './lib/tree.component';
+export { expand, ItemComponent } from './lib/item/item.component';
+export { TreeModel } from './lib/models/TreeModel';
+export {} from './lib/interfaces/IAppConfig';
+export {} from './lib/interfaces/IConfiguration';
+export {} from './lib/interfaces/IContextMenu';
+export {} from './lib/interfaces/IOuterNode';
+export { NODE_SERVICE, NodeService } from './lib/service/node.service';
+export {} from './lib/IApiConfig.service';
+export { ParentsListComponent } from './lib/parents-list/parents-list.component';
+export { NodeDispatcherService } from './lib/service/nodesDispatcher.service';
+export { TreeModelGeneratorService } from './lib/service/treeModelGenerator.service';
+export { TreeInitializerService } from './lib/service/initializer.service';
+export { TreeActionTypes, TreeCollapseNodeAction, TreeDeleteNodeAction, TreeDeleteNodeErrorAction, TreeDeleteNodeSuccessAction, TreeEditNodeStartAction, TreeExpandNodeAction, TreeInsertNodeAction, TreeLoadNodesAction, TreeLoadNodesErrorAction, TreeLoadNodesSuccessAction, TreeLoadPathAction, TreeMarkAsFullyLoadedAction, TreeMoveNodeAction, TreeMoveNodeErrorAction, TreeMoveNodeSuccessAction, TreeRegisterAction, TreeSaveNodeAction, TreeSaveNodeErrorAction, TreeSaveNodeSuccessAction, TreeSelectNodeAction, TreeSetAllNodesAction, TreeSetConfigurationAction } from './lib/store/treeActions.service';
+export { TreeEffectsService } from './lib/store/treeEffects.service';
+export {} from './lib/store/ITreeState';
+export { treeReducer, treeSelector, treeConfigurationSelector, expandedNodesSelector, selectedNodeSelector, previouslySelectedNodeSelector, NEW_NODE_ID, emptyTreeData, treeStateSelector } from './lib/store/treeReducer';
+export { DragAndDrop } from './lib/dragAndDrop/dragAndDrop.service';
+export { DraggableDirective } from './lib/dragAndDrop/draggable.directive';
+export { DroppableDirective } from './lib/dragAndDrop/droppable.directive';
+export { DropzoneComponent } from './lib/dragAndDrop/dropzone/dropzone.component';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0ByaWduL2FuZ3VsYXIyLXRyZWUvIiwic291cmNlcyI6WyJwdWJsaWNfYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFHQSxrREFBYyxtQkFBbUIsQ0FBQztBQUNsQyw4QkFBYyxzQkFBc0IsQ0FBQztBQUNyQyxzQ0FBYywyQkFBMkIsQ0FBQztBQUMxQywwQkFBYyx3QkFBd0IsQ0FBQztBQUN2QyxlQUFjLDZCQUE2QixDQUFDO0FBQzVDLGVBQWMsaUNBQWlDLENBQUM7QUFDaEQsZUFBYywrQkFBK0IsQ0FBQztBQUM5QyxlQUFjLDZCQUE2QixDQUFDO0FBQzVDLDBDQUFjLDRCQUE0QixDQUFDO0FBQzNDLGVBQWMsMEJBQTBCLENBQUM7QUFDekMscUNBQWMsMkNBQTJDLENBQUM7QUFDMUQsc0NBQWMsdUNBQXVDLENBQUM7QUFDdEQsMENBQWMsMENBQTBDLENBQUM7QUFDekQsdUNBQWMsbUNBQW1DLENBQUM7QUFDbEQsb2pCQUFjLGlDQUFpQyxDQUFDO0FBQ2hELG1DQUFjLGlDQUFpQyxDQUFDO0FBQ2hELGVBQWMsd0JBQXdCLENBQUM7QUFDdkMsaU1BQWMseUJBQXlCLENBQUM7QUFDeEMsNEJBQWMsdUNBQXVDLENBQUM7QUFDdEQsbUNBQWMsdUNBQXVDLENBQUM7QUFDdEQsbUNBQWMsdUNBQXVDLENBQUM7QUFDdEQsa0NBQWMsK0NBQStDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIHRyZWVcbiAqL1xuZXhwb3J0ICogZnJvbSAnLi9saWIvdHJlZS5tb2R1bGUnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvdHJlZS5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvaXRlbS9pdGVtLmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9tb2RlbHMvVHJlZU1vZGVsJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL2ludGVyZmFjZXMvSUFwcENvbmZpZyc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9pbnRlcmZhY2VzL0lDb25maWd1cmF0aW9uJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL2ludGVyZmFjZXMvSUNvbnRleHRNZW51JztcbmV4cG9ydCAqIGZyb20gJy4vbGliL2ludGVyZmFjZXMvSU91dGVyTm9kZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9zZXJ2aWNlL25vZGUuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9JQXBpQ29uZmlnLnNlcnZpY2UnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvcGFyZW50cy1saXN0L3BhcmVudHMtbGlzdC5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvc2VydmljZS9ub2Rlc0Rpc3BhdGNoZXIuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9zZXJ2aWNlL3RyZWVNb2RlbEdlbmVyYXRvci5zZXJ2aWNlJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL3NlcnZpY2UvaW5pdGlhbGl6ZXIuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9zdG9yZS90cmVlQWN0aW9ucy5zZXJ2aWNlJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL3N0b3JlL3RyZWVFZmZlY3RzLnNlcnZpY2UnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvc3RvcmUvSVRyZWVTdGF0ZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9zdG9yZS90cmVlUmVkdWNlcic7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9kcmFnQW5kRHJvcC9kcmFnQW5kRHJvcC5zZXJ2aWNlJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL2RyYWdBbmREcm9wL2RyYWdnYWJsZS5kaXJlY3RpdmUnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvZHJhZ0FuZERyb3AvZHJvcHBhYmxlLmRpcmVjdGl2ZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9kcmFnQW5kRHJvcC9kcm9wem9uZS9kcm9wem9uZS5jb21wb25lbnQnO1xuIl19
