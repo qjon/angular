@@ -10,9 +10,10 @@ Simple component to display tree structure
 ## Installation
 
     npm i @rign/angular2-tree --save
-
+   
 It also require to install dependencies:
 
+  * @angular/animations
   * @angular/cdk
   * @angular/common
   * @angular/core

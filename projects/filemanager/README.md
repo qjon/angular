@@ -4,6 +4,7 @@ This project is a very simple __Angular2 file manager__.
 
 [![npm (scoped)](https://img.shields.io/npm/v/@rign/angular2-filemanager.svg)]()
 [![Build Status](https://travis-ci.org/qjon/angular2-filemanager.svg?branch=master)](https://travis-ci.org/qjon/angular2-filemanager)
+[![npm version](https://badge.fury.io/js/%40rign%2Fangular2-filemanager.svg)](https://badge.fury.io/js/%40rign%2Fangular2-filemanager.svg)
 [![npm](https://img.shields.io/npm/dm/@rign\/angular2-filemanager.svg)](https://img.shields.io/npm/dm/@rign\/angular2-filemanager.svg)
 [![npm](https://img.shields.io/npm/l/@rign\/angular2-filemanager.svg)](https://github.com/qjon/angular2-filemanager/blob/master/LICENSE)
 
@@ -17,6 +18,7 @@ Install npm package
         
 It also require such dependencies:
 
+  * @angular/animations
   * @angular/cdk
   * @angular/common
   * @angular/core
