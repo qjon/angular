@@ -3,17 +3,41 @@
 Simple component to display tree structure
 
 [![npm (scoped)](https://img.shields.io/npm/v/@rign/angular2-tree.svg)]()
-[![Build Status](https://travis-ci.org/qjon/angular2-tree.svg?branch=master)](https://travis-ci.org/qjon/angular2-tree)
-[![npm version](https://badge.fury.io/js/%40rign%2Fangular2-tree.svg)](https://badge.fury.io/js/%40rign%2Fangular2-tree.svg)
+[![Build Status](https://travis-ci.org/qjon/angular.svg?branch=master)](https://travis-ci.org/qjon/angular2-tree)
 [![npm](https://img.shields.io/npm/dm/@rign\/angular2-tree.svg)](https://img.shields.io/npm/dm/@rign\/angular2-tree.svg)
 [![npm](https://img.shields.io/npm/l/@rign\/angular2-tree.svg)](https://github.com/qjon/angular2-tree/blob/master/LICENSE)
 
 ## Installation
 
     npm i @rign/angular2-tree --save
-   
 
-## Usage    
+It also require to install dependencies:
+
+  * @angular/cdk
+  * @angular/common
+  * @angular/core
+  * @angular/forms
+  * @angular/http
+  * @ngrx/core
+  * @ngrx/effects
+  * @ngrx/store
+  * @ngrx/store-devtools
+  * @ngx-translate/core
+  * angular2-uuid
+  * bootstrap
+  * core-js
+  * font-awesome
+  * lodash.isequal
+  * ng2-dnd
+  * ngx-contextmenu
+  * rxjs
+  * zone.js
+  
+You can install them using below command: 
+
+    npm i @angular/cdk @angular/common @angular/core @angular/forms @angular/http @ngrx/core @ngrx/effects @ngrx/store @ngx-translate/core angular2-uuid bootstrap core-js font-awesome lodash.isequal ng2-dnd ngx-contextmenu rxjs zone.js --save 
+  
+# Usage    
     
 First you have to create your own loader service        
 
