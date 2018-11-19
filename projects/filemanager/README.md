@@ -4,7 +4,6 @@ This project is a very simple __Angular2 file manager__.
 
 [![npm (scoped)](https://img.shields.io/npm/v/@rign/angular2-filemanager.svg)]()
 [![Build Status](https://travis-ci.org/qjon/angular2-filemanager.svg?branch=master)](https://travis-ci.org/qjon/angular2-filemanager)
-[![npm version](https://badge.fury.io/js/%40rign%2Fangular2-filemanager.svg)](https://badge.fury.io/js/%40rign%2Fangular2-filemanager.svg)
 [![npm](https://img.shields.io/npm/dm/@rign\/angular2-filemanager.svg)](https://img.shields.io/npm/dm/@rign\/angular2-filemanager.svg)
 [![npm](https://img.shields.io/npm/l/@rign\/angular2-filemanager.svg)](https://github.com/qjon/angular2-filemanager/blob/master/LICENSE)
 
@@ -14,6 +13,39 @@ This project is a very simple __Angular2 file manager__.
 Install npm package
 
     npm i @rign/angular2-filemanager --save
+    
+        
+It also require such dependencies:
+
+  * @angular/cdk
+  * @angular/common
+  * @angular/core
+  * @angular/forms
+  * @angular/http
+  * @rign/angular2-tree
+  * @ngrx/core
+  * @ngrx/effects
+  * @ngrx/store
+  * @ngx-translate/core
+  * angular-confirmation-popover
+  * angular2-notifications
+  * angular2-uuid
+  * bootstrap
+  * core-js
+  * font-awesome
+  * lodash.isequal
+  * ng2-dnd
+  * ng2-file-upload
+  * ng2-img-cropper
+  * ngx-contextmenu
+  * rxjs
+  * zone.js
+
+you can install it using below command
+    
+    npm i @angular/cdk @angular/common @angular/core @angular/forms @angular/http @rign/angular2- @ngrx/core @ngrx/effects @ngrx/store @ngrx/store-devtools @ngx-translate/core angular-confirmation-popover angular2-notifications angular2-uuid bootstrap core-js font-awesome lodash.isequal ng2-dnd ng2-file-upload ng2-img-cropper ngx-contextmenu rxjs zone.js --save
+   
+
 
 ## Usage
   

@@ -3,10 +3,21 @@
   "version": "2.0.0",
   "license": "MIT",
   "author": "Rafal Ignaszewski <rafal@ignaszewski.pl> http://ignaszewski.pl",
+  "description": "Filemanager component to display structure of directories and files",
+  "keywords": [
+    "Angular",
+    "filemanager",
+    "files"
+  ],
+  "homepage": "https://qjon.github.io/angular/fielmanager",
   "scripts": {
     "build": "ng build --project=filemanager",
     "start": "ng build --project=filemanager --watch",
     "test": "ng test --project=filemanager"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/qjon/angular.git"
   },
   "peerDependencies": {
     "@angular/cdk": "^7.0.0",

@@ -1,5 +1,5 @@
 {
-  "name": "ngx-libraries",
+  "name": "angular-libraries",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "gh-pages": "ng build --prod --base-href \"https://qjon.github.io/angular/\" &&  ./node_modules/.bin/angular-cli-ghpages -b gh-pages  --name=\"Rafał Ignaszewski\" --email=\"rafal@ignaszewski.pl\" --no-silent",
+    "gh-pages": "ng build --prod --base-href \"https://qjon.github.io/angular/\" &&  ./node_modules/.bin/angular-cli-ghpages -b gh-pages --dir=dist/angular  --name=\"Rafał Ignaszewski\" --email=\"rafal@ignaszewski.pl\" --no-silent",
     "e2e:tree": "ng e2e --project=tree-example-e2e"
   },
   "private": true,
@@ -53,6 +53,7 @@
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
+    "angular-cli-ghpages": "^0.5.3",
     "codelyzer": "~4.5.0",
     "html-dnd": "^1.2.0",
     "jasmine-core": "~2.99.1",
