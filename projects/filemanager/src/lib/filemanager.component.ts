@@ -45,10 +45,10 @@ export class FileManagerComponent implements OnInit, OnDestroy {
   @Output()
   public onSingleFileSelect = new EventEmitter();
 
-  @ViewChild(TreeComponent)
+  @ViewChild(TreeComponent, { static: true })
   public treeComponent: TreeComponent;
 
-  @ViewChild(FilesListComponent)
+  @ViewChild(FilesListComponent, { static: true })
   public filesList: FilesListComponent;
 
   /**

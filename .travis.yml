@@ -3,19 +3,19 @@ dist: trusty
 addons:
   apt:
     sources:
-    - google-chrome
+      - google-chrome
     packages:
-    - google-chrome-stable
+      - google-chrome-stable
 language: node_js
 node_js:
-- 8
+  - 10
 before_script:
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 install:
-- npm install
+  - npm install
 script:
-- ./node_modules/.bin/webdriver-manager update
-- ng build --project=tree && ng test --project=tree && ng e2e --project=tree-example-e2e
-- ng build --project=filemanager && ng test --project=filemanager
-- ng build --prod
+  - ./node_modules/.bin/webdriver-manager update
+  - ng build --project=tree && ng test --project=tree && ng e2e --project=tree-example-e2e
+  - ng build --project=filemanager && ng test --project=filemanager
+  - ng build --prod

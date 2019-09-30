@@ -294,6 +294,9 @@ At the end do not forget to add this effects to your app.
  
 ## Changes
 
+### v4.1.0
+* update to Angular 8
+
 ### v4.0.0
 * update to Angular 7
 * switch from ng2-translate to ngx-translate

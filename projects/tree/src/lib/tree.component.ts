@@ -25,7 +25,7 @@ import {Observable, Subscription} from 'rxjs';
 export class TreeComponent implements OnInit, OnChanges, OnDestroy {
   @Input() treeModel: TreeModel;
 
-  @ViewChild('contextMenu') contextMenu: ContextMenuComponent;
+  @ViewChild('contextMenu', { static: true }) contextMenu: ContextMenuComponent;
 
   /**
    * List of default options for context menu

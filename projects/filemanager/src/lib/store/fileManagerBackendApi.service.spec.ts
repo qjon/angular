@@ -1,4 +1,3 @@
-import {Http} from '@angular/http';
 import {FileManagerConfiguration} from '../configuration/fileManagerConfiguration.service';
 import {FileManagerBackendApiService} from './fileManagerBackendApi.service';
 import {rootNode} from '../../../_unitTestMocks/folderDataMock';

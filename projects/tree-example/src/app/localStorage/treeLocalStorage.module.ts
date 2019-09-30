@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HttpModule} from '@angular/http';
 import {TreeModule} from '@rign/angular2-tree';
 import {TreeLocalStorageNodeService} from './treeLocalStorage.service';
 
@@ -9,8 +8,7 @@ import {TreeLocalStorageNodeService} from './treeLocalStorage.service';
   exports: [],
   imports: [
     BrowserModule,
-    HttpModule,
-    TreeModule
+    TreeModule,
   ],
   providers: [TreeLocalStorageNodeService]
 })

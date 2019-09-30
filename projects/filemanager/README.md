@@ -185,6 +185,9 @@ To change language to polish you have to add these lines to your app module:
 
 ## Features
 
+### v2.1.0
+* update to Angular 8
+
 ### v2.0.0
 * update to Angular 7
 * integration with _@rign/angular2-tree_ in version _4.x_

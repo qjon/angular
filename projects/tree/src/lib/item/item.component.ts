@@ -23,8 +23,7 @@ import {
 } from '../store/treeActions.service';
 import {TreeModel} from '../models/TreeModel';
 import {Actions} from '@ngrx/effects';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-import {AnimationTriggerMetadata} from '@angular/animations/src/animation_metadata';
+import {animate, AnimationTriggerMetadata, state, style, transition, trigger} from '@angular/animations';
 import {select, Store} from '@ngrx/store';
 import {ITreeState} from '../store/ITreeState';
 import {NEW_NODE_ID, previouslySelectedNodeSelector} from '../store/treeReducer';
@@ -59,7 +58,7 @@ export class ItemComponent implements OnInit, OnDestroy, OnChanges {
   /**
    * Input field where we can change data name
    */
-  @ViewChild('inputElement') input: any;
+  @ViewChild('inputElement', {static: false}) input: any;
 
   /**
    * Node instance
