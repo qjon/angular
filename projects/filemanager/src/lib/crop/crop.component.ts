@@ -45,10 +45,10 @@ export class CropComponent implements AfterContentInit {
   @Output()
   public onCrop = new EventEmitter();
 
-  @ViewChild('container', {read: ViewContainerRef})
+  @ViewChild('container', { read: ViewContainerRef, static: true })
   public container: ViewContainerRef;
 
-  @ViewChild('cropper')
+  @ViewChild('cropper', { static: false })
   public cropper: ImageCropperComponent;
 
   private bounds: Bounds;
