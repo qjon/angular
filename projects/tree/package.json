@@ -1,6 +1,6 @@
 {
   "name": "@rign/angular2-tree",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "license": "MIT",
   "author": "Rafal Ignaszewski <rafal@ignaszewski.pl> http://ignaszewski.pl",
   "description": "Tree component display tree structure",
@@ -12,7 +12,8 @@
   "scripts": {
     "build": "ng build --project=tree",
     "start": "ng build --project=tree --watch",
-    "test": "ng test --project=tree"
+    "test": "ng test --project=tree",
+    "test:dev": "ng test --project=tree --watch"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,6 @@
     "@ngrx/effects": "^6.1.2",
     "@ngrx/store": "^6.1.2",
     "@ngrx/store-devtools": "^6.1.2",
-    "@ngx-translate/core": "^11.0.1",
     "angular2-uuid": "^1.1.1",
     "bootstrap": "^4.3.1",
     "core-js": "^2.6.9",

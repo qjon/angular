@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, Input, OnChanges, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {IOuterNode} from './interfaces/IOuterNode';
 import {IContextMenu} from './interfaces/IContextMenu';
 import {TreeModel} from './models/TreeModel';
@@ -8,13 +8,10 @@ import {IDragAndDrop} from './interfaces/IDragAndDrop';
 import {Store} from '@ngrx/store';
 import {ITreeState} from './store/ITreeState';
 import {filter} from 'rxjs/operators';
-import {
-  TreeDeleteNodeAction,
-  TreeEditNodeStartAction,
-  TreeInsertNodeAction,
-  TreeMoveNodeAction
-} from './store/treeActions.service';
+import {TreeDeleteNodeAction, TreeEditNodeStartAction, TreeInsertNodeAction, TreeMoveNodeAction} from './store/treeActions.service';
 import {Observable, Subscription} from 'rxjs';
+import {TREE_TRANSLATION_TOKEN} from './service/tree-translation-token';
+import {ITreeTranslations} from './interfaces/ITreeTranslations';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -23,9 +20,11 @@ import {Observable, Subscription} from 'rxjs';
   styleUrls: ['./tree.component.scss']
 })
 export class TreeComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() treeModel: TreeModel;
+  @Input()
+  public treeModel: TreeModel;
 
-  @ViewChild('contextMenu', { static: true }) contextMenu: ContextMenuComponent;
+  @ViewChild('contextMenu', {static: true})
+  public contextMenu: ContextMenuComponent;
 
   /**
    * List of default options for context menu
@@ -33,12 +32,12 @@ export class TreeComponent implements OnInit, OnChanges, OnDestroy {
   private defaultOptions: IContextMenu[] = [
     {
       name: 'onEdit',
-      text: 'RI_TREE_LBL_EDIT_NODE',
+      text: this.treeTranslationService.RI_TREE_LBL_EDIT_NODE,
       iconCls: 'fa fa-edit'
     },
     {
       name: 'onDelete',
-      text: 'RI_TREE_LBL_REMOVE_NODE',
+      text: this.treeTranslationService.RI_TREE_LBL_REMOVE_NODE,
       iconCls: 'fa fa-trash'
     }
   ];
@@ -55,7 +54,8 @@ export class TreeComponent implements OnInit, OnChanges, OnDestroy {
   protected subscription = new Subscription();
 
   public constructor(protected store: Store<ITreeState>,
-                     protected dragAndDrop: DragAndDrop) {
+                     protected dragAndDrop: DragAndDrop,
+                     @Inject(TREE_TRANSLATION_TOKEN) public treeTranslationService: ITreeTranslations) {
 
   }
 

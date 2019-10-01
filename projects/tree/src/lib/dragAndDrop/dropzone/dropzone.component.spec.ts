@@ -4,8 +4,15 @@ import {DropzoneComponent} from './dropzone.component';
 import {DragAndDrop} from '../dragAndDrop.service';
 import {TreeModel} from '../../models/TreeModel';
 import {IDragElement} from '../../interfaces/IDragAndDrop';
-import {TranslateModule} from '@ngx-translate/core';
+import {ITreeTranslations} from '../../interfaces/ITreeTranslations';
+import {TREE_TRANSLATION_TOKEN} from '../../service/tree-translation-token';
 
+class TreeTranslationService implements ITreeTranslations {
+  readonly RI_TREE_LBL_ADD_NODE = 'Add data';
+  readonly RI_TREE_LBL_EDIT_NODE = 'Edit data';
+  readonly RI_TREE_LBL_REMOVE_NODE = 'Delete data';
+  readonly RI_TREE_LBL_DROP_ZONE = 'Drop here to move data to root level';
+}
 
 describe('DropzoneComponent', () => {
   const TREE_ID = 'treeId';
@@ -19,6 +26,7 @@ describe('DropzoneComponent', () => {
 
   beforeEach(async(() => {
     handler = jasmine.createSpy('handler');
+
 
     dragAndDrop = new DragAndDrop();
 
@@ -41,9 +49,9 @@ describe('DropzoneComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
       providers: [
-        {provide: DragAndDrop, useValue: dragAndDrop}
+        {provide: DragAndDrop, useValue: dragAndDrop},
+        {provide: TREE_TRANSLATION_TOKEN, useClass: TreeTranslationService},
       ],
       declarations: [DropzoneComponent]
     })
