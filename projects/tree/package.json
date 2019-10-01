@@ -1,6 +1,6 @@
 {
   "name": "@rign/angular2-tree",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "license": "MIT",
   "author": "Rafal Ignaszewski <rafal@ignaszewski.pl> http://ignaszewski.pl",
   "description": "Tree component display tree structure",

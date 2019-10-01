@@ -1,6 +1,13 @@
 import {
-  Component, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver, Output,
-  EventEmitter, AfterContentInit
+  AfterContentInit,
+  Component,
+  ComponentFactoryResolver,
+  EventEmitter,
+  Inject,
+  Input,
+  Output,
+  ViewChild,
+  ViewContainerRef
 } from '@angular/core';
 import {FileModel} from '../filesList/file.model';
 import {CropperSettings} from 'ng2-img-cropper/src/cropperSettings';
@@ -12,29 +19,31 @@ import {ImageCropperComponent} from 'ng2-img-cropper';
 import {IFileManagerState} from '../store/file-manager.reducer';
 import {Store} from '@ngrx/store';
 import {CropFileAction} from '../store/file-manager.action';
+import {FILEMANAGER_TRANSLATION_TOKEN} from '../services/filemanager-translation.token';
+import {IFilemanagerTranslation} from '../interfaces/filemanager-translation.interface';
 
 @Component({
   selector: 'crop-image',
   styleUrls: ['./crop.scss'],
   template: `
-    <div class="crop-image">
-      <div class="crop-workbench">
-        <div #container></div>
+      <div class="crop-image">
+          <div class="crop-workbench">
+              <div #container></div>
+          </div>
+          <div class="btn-toolbar">
+              <div class="btn-group">
+                  <button class="btn btn-primary" *ngFor="let cropSize of cropSizeList" (click)="updateCropSize(cropSize)"
+                          [ngClass]="{'active': cropSize == currentCropSize}">{{cropSize.name}}
+                  </button>
+              </div>
+              <div class="btn-group pull-right">
+                  <button class="btn btn-success btn-icon" (click)="cropImage()">
+                      <i class="fa fa-check"></i>
+                      <span>{{ filemanagerTranslations.RI_FM_BTN_SAVE }}</span>
+                  </button>
+              </div>
+          </div>
       </div>
-      <div class="btn-toolbar">
-        <div class="btn-group">
-          <button class="btn btn-primary" *ngFor="let cropSize of cropSizeList" (click)="updateCropSize(cropSize)"
-                  [ngClass]="{'active': cropSize == currentCropSize}">{{cropSize.name | translate}}
-          </button>
-        </div>
-        <div class="btn-group pull-right">
-          <button class="btn btn-success btn-icon" (click)="cropImage()">
-            <i class="fa fa-check"></i>
-            <span>{{'RI_FM_BTN_SAVE' | translate}}</span>
-          </button>
-        </div>
-      </div>
-    </div>
   `
 })
 
@@ -45,10 +54,10 @@ export class CropComponent implements AfterContentInit {
   @Output()
   public onCrop = new EventEmitter();
 
-  @ViewChild('container', { read: ViewContainerRef, static: true })
+  @ViewChild('container', {read: ViewContainerRef, static: true})
   public container: ViewContainerRef;
 
-  @ViewChild('cropper', { static: false })
+  @ViewChild('cropper', {static: false})
   public cropper: ImageCropperComponent;
 
   private bounds: Bounds;
@@ -58,7 +67,8 @@ export class CropComponent implements AfterContentInit {
 
   constructor(private resolver: ComponentFactoryResolver,
               private configuration: FileManagerConfiguration,
-              private store: Store<IFileManagerState>) {
+              private store: Store<IFileManagerState>,
+              @Inject(FILEMANAGER_TRANSLATION_TOKEN) public filemanagerTranslations: IFilemanagerTranslation) {
     this.cropSizeList = configuration.allowedCropSize;
   }
 

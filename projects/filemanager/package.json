@@ -1,6 +1,6 @@
 {
   "name": "@rign/angular2-filemanager",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "license": "MIT",
   "author": "Rafal Ignaszewski <rafal@ignaszewski.pl> http://ignaszewski.pl",
   "description": "Filemanager component to display structure of directories and files",
@@ -13,7 +13,8 @@
   "scripts": {
     "build": "ng build --project=filemanager",
     "start": "ng build --project=filemanager --watch",
-    "test": "ng test --project=filemanager"
+    "test": "ng test --project=filemanager",
+    "test:dev": "ng test --project=filemanager --watch"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,6 @@
     "@ngrx/effects": "^6.1.2",
     "@ngrx/store": "^6.1.2",
     "@ngrx/store-devtools": "^6.1.2",
-    "@ngx-translate/core": "^11.0.1",
     "@rign/angular2-tree": "4.0.0",
     "angular-confirmation-popover": "^4.2.1",
     "angular2-notifications": "^2.0.0",

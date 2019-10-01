@@ -1,4 +1,4 @@
-import {NgModule, CUSTOM_ELEMENTS_SCHEMA, Provider, ModuleWithProviders} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule, Provider} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TreeModule} from '@rign/angular2-tree';
 import {NotificationsService, SimpleNotificationsModule} from 'angular2-notifications';
@@ -18,7 +18,6 @@ import {FileManagerEffectsService} from './store/fileManagerEffects.service';
 import {StoreModule} from '@ngrx/store';
 import {fileManagerReducer} from './store/file-manager.reducer';
 import {FileManagerActionsService} from './store/fileManagerActions.service';
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {FileTypeFilterService} from './services/fileTypeFilter.service';
 import {SearchFilterService} from './services/searchFilter.service';
 import {FileManagerDispatcherService} from './store/file-manager-dispatcher.service';
@@ -32,7 +31,6 @@ import {FileManagerBackendApiService} from './store/fileManagerBackendApi.servic
 import {CurrentDirectoryFilesService} from './services/currentDirectoryFiles.service';
 import {SelectionComponent} from './toolbar/selectionDropDown/selection.component';
 import {FileComponent} from './filesList/file/file.component';
-import {TranslateModule} from '@ngx-translate/core';
 import {IFileManagerConfiguration} from './configuration/IFileManagerConfiguration';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
@@ -49,7 +47,6 @@ import {CommonModule} from '@angular/common';
     ReactiveFormsModule,
     SimpleNotificationsModule,
     StoreModule.forFeature('files', fileManagerReducer),
-    TranslateModule,
     TreeModule
   ],
   declarations: [

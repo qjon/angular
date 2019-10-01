@@ -23,7 +23,6 @@ It also require to install dependencies:
   * @ngrx/effects
   * @ngrx/store
   * @ngrx/store-devtools
-  * @ngx-translate/core
   * angular2-uuid
   * bootstrap
   * core-js
@@ -36,7 +35,7 @@ It also require to install dependencies:
   
 You can install them using below command: 
 
-    npm i @angular/cdk @angular/common @angular/core @angular/forms @angular/http @ngrx/core @ngrx/effects @ngrx/store @ngx-translate/core angular2-uuid bootstrap core-js font-awesome lodash.isequal ng2-dnd ngx-contextmenu rxjs zone.js --save 
+    npm i @angular/cdk @angular/common @angular/core @angular/forms @angular/http @ngrx/core @ngrx/effects @ngrx/store angular2-uuid bootstrap core-js font-awesome lodash.isequal ng2-dnd ngx-contextmenu rxjs zone.js --save 
   
 # Usage    
     
@@ -74,7 +73,7 @@ Include _TreeModule_  in your application module and create Store with empty sta
       ]
     })
     
-You need also init translations and animations module, because Tree needs it to translate all labels and animate expanding and collapsing. 
+You need also init animations module, because Tree needs it to animate expanding and collapsing node. 
 
     @NgModule({
       declarations: [
@@ -83,13 +82,11 @@ You need also init translations and animations module, because Tree needs it to 
       imports: [
         ...
         BrowserAnimationsModule,
-        TranslateModule.forRoot(),
         TreeModule.forRoot()
       ]
     })
     
-More information about translations you can find below in section _Translation_.
-    
+ 
 In any html file put 
 
     <ri-tree [treeModel]="treeModel"></ri-tree>
@@ -245,7 +242,7 @@ Using _ngrx/store_ you can listen on below actions and do whatever you want:
 
 ## Translation
 
-From version 4.2.0 translation dependency is removed from _@rign/angular2-tree_. Now you have to create service which implements ITreeTranslation interface:
+From version 5.0.0 translation dependency is removed from _@rign/angular2-tree_. Now you have to create service which implements ITreeTranslation interface:
 
     import {ITreeTranslations} from '@rign/angular2-tree';
     
@@ -298,7 +295,7 @@ At the end do not forget to add this effects to your app.
  
 ## Changes
 
-### v4.2.0
+### v5.0.0
 * remove translation module
 * add ITreeTranslation interface and TREE_TRANSLATION_TOKEN 
 

@@ -159,31 +159,36 @@ You are able to connect to actions for doing something special (but this is not 
 
 ## Translation
 
-Filemanager module has configured translation for english (default language) and polish. You can add translations for other languages as it is described in [Translate Module](https://github.com/ngx-translate/core/blob/master/README.md) documentation.
-In _Filemanager Module_ you are able to set following labels:
-
-* RI_TREE_LBL_ADD_NODE - Add node
-* RI_TREE_LBL_EDIT_NODE - Edit node
-* RI_TREE_LBL_REMOVE_NODE - Delete node
-* RI_TREE_LBL_DROP_ZONE - Drop here to move node to root level
-* RI_FM_BTN_LANDSCAPE - Landscape
-* RI_FM_BTN_PORTRAIT - Portrait
-* RI_FM_BTN_SAVE - Save
-* RI_FM_LBL_DELETE_SELECTION - Delete selection
-* RI_FM_LBL_INVERSE_SELECTION - Inverse selection
-* RI_FM_LBL_SEARCH_FOR - Search for...
-* RI_FM_LBL_SELECT_ALL - Select all
-* RI_FM_LBL_UNSELECT_ALL - Unselect all
-
-To change language to polish you have to add these lines to your app module:
-
-    export class AppModule {
-      public constructor(translate: TranslateService) {
-        translate.use('pl');
-      }
+From version 2.0.0 translation dependency is removed from _@rign/angular2-filemanager_. Now you have to create service which implements IFilemanagerTranslation interface:
+    
+    import {IFilemanagerTranslation} from '@rign/angular2-filemanager';
+    
+    export class TranslationService implements IFilemanagerTranslation {
+      readonly RI_FM_BTN_LANDSCAPE = 'Landscape';
+      readonly RI_FM_BTN_PORTRAIT = 'Portrait';
+      readonly RI_FM_BTN_SAVE = 'Save';
+      readonly RI_FM_LBL_CHOOSE_SELECTION = 'Choose selection';
+      readonly RI_FM_LBL_DELETE_SELECTION = 'Delete selection';
+      readonly RI_FM_LBL_INVERSE_SELECTION = 'Inverse selection';
+      readonly RI_FM_LBL_SEARCH_FOR = 'Search for...';
+      readonly RI_FM_LBL_SELECT_ALL = 'Select all';
+      readonly RI_FM_LBL_UNSELECT_ALL = 'Unselect all';
     }
+    
+and set is as provider in module which use _FilemanagerModule_
+
+    providers: [
+        TreeOneNodeService,
+        {provide: FILEMANAGER_TRANSLATION_TOKEN, useClass: TranslationService},
+    ]
+
+Please remember to add also translations for _TreeModule_. Look at [_Translations_](https://github.com/qjon/angular/blob/master/projects/tree/README.md)
 
 ## Features
+
+### v3.0.0
+* remove dependency to @ngx-translate/core
+* change translation mechanism
 
 ### v2.1.0
 * update to Angular 8

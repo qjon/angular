@@ -3,7 +3,8 @@
     <span *ngIf="displayMainButtonLabel">{{mainButton.name}}</span>
     <i *ngIf="mainButton.icon" class="{{mainButton.iconCssClass}}"></i>
   </button><!--
-  --><button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuButton"
+  -->
+  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuButton"
           [ngClass]="{disabled: mainButton.disabled}"
           (click)="toggleOpen()">
     <span class="caret"></span>
@@ -14,7 +15,7 @@
         [ngClass]="{'dropdown-divider': button.isDivider(), 'dropdown-item': !button.isDivider(), disabled: button.disabled}"
         *ngFor="let button of buttons " (click)="selectButton(button)">
       <span *ngIf="button.icon" class="{{button.iconCssClass}}"></span>
-      <span *ngIf="button.label">{{button.name | translate}}</span>
+      <span *ngIf="button.label">{{button.name}}</span>
     </li>
   </ul>
 </div>
