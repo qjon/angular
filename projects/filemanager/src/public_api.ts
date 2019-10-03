@@ -27,8 +27,6 @@ export * from './lib/services/searchFilter.service';
 export * from './lib/services/filemanager-translation.token';
 export * from './lib/store/file-manager.action';
 export * from './lib/store/file-manager.reducer';
-export * from './lib/store/file-manager-dispatcher.service';
-export * from './lib/store/fileManagerActions.service';
 export * from './lib/store/fileManagerApi.service';
 export * from './lib/store/fileManagerApiAbstract.class';
 export * from './lib/store/fileManagerBackendApi.service';

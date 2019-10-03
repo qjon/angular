@@ -16,10 +16,8 @@ import {EffectsModule} from '@ngrx/effects';
 import {FileManagerEffectsService} from './store/fileManagerEffects.service';
 import {StoreModule} from '@ngrx/store';
 import {fileManagerReducer} from './store/file-manager.reducer';
-import {FileManagerActionsService} from './store/fileManagerActions.service';
 import {FileTypeFilterService} from './services/fileTypeFilter.service';
 import {SearchFilterService} from './services/searchFilter.service';
-import {FileManagerDispatcherService} from './store/file-manager-dispatcher.service';
 import {FileTypeFilterComponent} from './toolbar/fileTypeFilter/fileTypeFilter.component';
 import {SearchFileComponent} from './toolbar/searchFile/searchFile.component';
 import {FileManagerApiService} from './store/fileManagerApi.service';
@@ -72,11 +70,9 @@ export class FileManagerModule {
       ngModule: FileManagerModule,
       providers: [
         CurrentDirectoryFilesService,
-        FileManagerActionsService,
         FileManagerApiService,
         FileManagerBackendApiService,
         FileManagerConfiguration,
-        FileManagerDispatcherService,
         FileManagerEffectsService,
         FilemanagerNotifications,
         FileManagerUploader,
@@ -95,11 +91,9 @@ export class FileManagerModule {
       ngModule: FileManagerModule,
       providers: [
         CurrentDirectoryFilesService,
-        FileManagerActionsService,
         FileManagerApiService,
         FileManagerBackendApiService,
         FileManagerConfiguration,
-        FileManagerDispatcherService,
         FileManagerEffectsService,
         FilemanagerNotifications,
         FileManagerUploader,

@@ -207,6 +207,7 @@ You can listen on that _notification$_ property and display your own type of not
 * remove dependency to _@ngx-translate/core_
 * change translation mechanism
 * remove dependency to _angular2-notifications_, now you have to use your own notifications - see _Notifications_ section
+* remove deprecated services: _FileManagerDispatcherService_ and _FileManagerActionsService_ 
 
 ### v2.1.0
 * update to Angular 8
