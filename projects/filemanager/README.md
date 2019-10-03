@@ -28,9 +28,7 @@ It also require such dependencies:
   * @ngrx/core
   * @ngrx/effects
   * @ngrx/store
-  * @ngx-translate/core
   * angular-confirmation-popover
-  * angular2-notifications
   * angular2-uuid
   * bootstrap
   * core-js
@@ -184,11 +182,31 @@ and set is as provider in module which use _FilemanagerModule_
 
 Please remember to add also translations for _TreeModule_. Look at [_Translations_](https://github.com/qjon/angular/blob/master/projects/tree/README.md)
 
+## Notifications
+
+_Filemanager_ module has its own service _FilemanagerNotifications_ which store all notifications that comes from inside of that module.
+You can override this service using _INotificationService_ interface.
+
+    export interface INotificationService {
+      readonly notification$: Observable<INotification>;
+    
+      send(notification: INotification): void;
+    } 
+    
+You can listen on that _notification$_ property and display your own type of notification. Each notification has such interface
+
+    export interface INotification {
+      type: 'alert' | 'error' | 'success';
+      title: string;
+      message?: string;
+    }
+
 ## Features
 
 ### v3.0.0
-* remove dependency to @ngx-translate/core
+* remove dependency to _@ngx-translate/core_
 * change translation mechanism
+* remove dependency to _angular2-notifications_, now you have to use your own notifications - see _Notifications_ section
 
 ### v2.1.0
 * update to Angular 8

@@ -1,18 +1,18 @@
 import {Injectable} from '@angular/core';
-import {IOuterNode, INodeService} from '@rign/angular2-tree';
+import {INodeService, IOuterNode} from '@rign/angular2-tree';
 import {UUID} from 'angular2-uuid';
 import {IFileManagerApi} from './IFileManagerApi';
 import {IOuterFile} from '../filesList/interface/IOuterFile';
 import {IFileDataProperties} from '../services/imageDataConverter.service';
 import {ICropBounds} from '../crop/ICropBounds';
-import {FilemanagerNotifcations} from '../services/FilemanagerNotifcations';
+import {FilemanagerNotifications} from '../services/FilemanagerNotifications';
 import {AbstractFileManagerApiService, FILEMANAGER_TREE_NAME} from './fileManagerApiAbstract.class';
 import {empty, Observable, of, throwError} from 'rxjs';
 
 @Injectable()
 export class FileManagerApiService extends AbstractFileManagerApiService implements IFileManagerApi, INodeService {
 
-  public constructor(private filemanagerNotfication: FilemanagerNotifcations) {
+  public constructor(private filemanagerNotification: FilemanagerNotifications) {
     super();
   }
 
@@ -185,7 +185,7 @@ export class FileManagerApiService extends AbstractFileManagerApiService impleme
     });
 
     if (isMovedToSameFolder) {
-        return Observable.throw(errorMsg);
+      return Observable.throw(errorMsg);
     }
 
     if (this.saveFiles()) {
@@ -249,7 +249,7 @@ export class FileManagerApiService extends AbstractFileManagerApiService impleme
 
       return true;
     } catch (e) {
-      this.filemanagerNotfication.sendNotification({
+      this.filemanagerNotification.send({
         type: 'error',
         title: 'State is not saved.',
         message: 'Reload previous state.'
@@ -270,7 +270,7 @@ export class FileManagerApiService extends AbstractFileManagerApiService impleme
 
       return true;
     } catch (e) {
-      this.filemanagerNotfication.sendNotification({
+      this.filemanagerNotification.send({
         type: 'error',
         title: 'State is not saved.',
         message: 'Reload previous state.'

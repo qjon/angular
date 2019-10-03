@@ -1,19 +1,17 @@
+import {Component, EventEmitter, HostListener, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {
-  Component, OnInit, ViewChild, HostListener, EventEmitter, Output, OnDestroy
-} from '@angular/core';
-import {
-  TreeComponent,
-  NodeService,
+  IConfiguration,
   IContextMenu,
   IOuterNode,
   ITreeData,
   ITreeState,
-  IConfiguration,
+  NodeDispatcherService,
+  NodeService,
+  TreeComponent,
+  TreeInitializerService,
   TreeModel,
-  NodeDispatcherService, TreeInitializerService,
 } from '@rign/angular2-tree';
 import {FileModel} from './filesList/file.model';
-import {NotificationsService} from 'angular2-notifications';
 import {IFileEvent} from './filesList/interface/IFileEvent';
 import {Button} from './toolbar/models/button.model';
 import {FilesListComponent} from './filesList/filesList.component';
@@ -23,13 +21,15 @@ import {FileManagerConfiguration} from './configuration/fileManagerConfiguration
 import {Store} from '@ngrx/store';
 import {FileManagerEffectsService} from './store/fileManagerEffects.service';
 import {FileManagerApiService} from './store/fileManagerApi.service';
-import {FilemanagerNotifcations, INotification} from './services/FilemanagerNotifcations';
+import {FilemanagerNotifications} from './services/FilemanagerNotifications';
 import {CurrentDirectoryFilesService} from './services/currentDirectoryFiles.service';
 import {IOuterFile} from './filesList/interface/IOuterFile';
 import {FILEMANAGER_TREE_NAME} from './store/fileManagerApiAbstract.class';
 import {
   ChooseFilesAction,
-  DeleteSelectedFilesAction, InverseFilesSelectionAction, LoadFilesAction,
+  DeleteSelectedFilesAction,
+  InverseFilesSelectionAction,
+  LoadFilesAction,
   SelectAllFilesAction,
   UnSelectAllFilesAction
 } from './store/file-manager.action';
@@ -37,7 +37,7 @@ import {combineLatest, Observable, Subscription} from 'rxjs';
 
 @Component({
   selector: 'ri-filemanager',
-  providers: [NodeService, NotificationsService],
+  providers: [NodeService],
   styleUrls: ['./main.scss'],
   templateUrl: './filemanager.html'
 })
@@ -45,10 +45,10 @@ export class FileManagerComponent implements OnInit, OnDestroy {
   @Output()
   public onSingleFileSelect = new EventEmitter();
 
-  @ViewChild(TreeComponent, { static: true })
+  @ViewChild(TreeComponent, {static: true})
   public treeComponent: TreeComponent;
 
-  @ViewChild(FilesListComponent, { static: true })
+  @ViewChild(FilesListComponent, {static: true})
   public filesList: FilesListComponent;
 
   /**
@@ -81,16 +81,6 @@ export class FileManagerComponent implements OnInit, OnDestroy {
   public isPreviewMode = false;
   public isCropMode = false;
 
-  public notificationOptions = {
-    position: ['bottom', 'right'],
-    timeOut: 3000,
-    lastOnBottom: false,
-    preventDuplicates: true,
-    rtl: false,
-    showProgressBar: true,
-    pauseOnHover: true
-  };
-
   /**
    * List of context menu
    */
@@ -103,21 +93,13 @@ export class FileManagerComponent implements OnInit, OnDestroy {
   public constructor(private store: Store<ITreeState>,
                      private nodeDispatcherService: NodeDispatcherService,
                      private treeService: FileManagerApiService,
-                     private notifications: NotificationsService,
                      private configuration: FileManagerConfiguration,
                      private fileManagerEffects: FileManagerEffectsService,
-                     private filemanagerNotifcations: FilemanagerNotifcations,
+                     private filemanagerNotifications: FilemanagerNotifications,
                      private currentDirectoryFilesService: CurrentDirectoryFilesService,
                      private treeInitializerService: TreeInitializerService) {
 
     this.menu = configuration.contextMenuItems;
-
-    this.filemanagerNotifcations.getNotificationStream()
-      .subscribe((notification: INotification) => {
-        const {type, title, message} = notification;
-
-        this.notifications[type](title, message);
-      });
 
     this.subscription.add(
       this.currentDirectoryFilesService.selectedFiles$
@@ -187,7 +169,11 @@ export class FileManagerComponent implements OnInit, OnDestroy {
    * Run when all files are uploaded
    */
   public onUpload(folderId: string) {
-    this.notifications.success('File upload', 'Upload complete');
+    this.filemanagerNotifications.send({
+      type: 'success',
+      title: 'File upload',
+      message: 'Upload complete',
+    });
   }
 
 

@@ -1,7 +1,6 @@
 import {CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule, Provider} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TreeModule} from '@rign/angular2-tree';
-import {NotificationsService, SimpleNotificationsModule} from 'angular2-notifications';
 import {FileManagerComponent} from './filemanager.component';
 import {ToolbarComponent} from './toolbar/toolbar.component';
 import {FilesListComponent} from './filesList/filesList.component';
@@ -25,7 +24,7 @@ import {FileTypeFilterComponent} from './toolbar/fileTypeFilter/fileTypeFilter.c
 import {SearchFileComponent} from './toolbar/searchFile/searchFile.component';
 import {FileManagerApiService} from './store/fileManagerApi.service';
 import {ImageDataConverter} from './services/imageDataConverter.service';
-import {FilemanagerNotifcations} from './services/FilemanagerNotifcations';
+import {FilemanagerNotifications} from './services/FilemanagerNotifications';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 import {FileManagerBackendApiService} from './store/fileManagerBackendApi.service';
 import {CurrentDirectoryFilesService} from './services/currentDirectoryFiles.service';
@@ -45,7 +44,6 @@ import {CommonModule} from '@angular/common';
     HttpClientModule,
     ImageCropperModule,
     ReactiveFormsModule,
-    SimpleNotificationsModule,
     StoreModule.forFeature('files', fileManagerReducer),
     TreeModule
   ],
@@ -80,11 +78,10 @@ export class FileManagerModule {
         FileManagerConfiguration,
         FileManagerDispatcherService,
         FileManagerEffectsService,
-        FilemanagerNotifcations,
+        FilemanagerNotifications,
         FileManagerUploader,
         FileTypeFilterService,
         ImageDataConverter,
-        NotificationsService,
         SearchFilterService,
         TreeService,
         {provide: 'fileManagerConfiguration', useValue: config},
@@ -104,11 +101,10 @@ export class FileManagerModule {
         FileManagerConfiguration,
         FileManagerDispatcherService,
         FileManagerEffectsService,
-        FilemanagerNotifcations,
+        FilemanagerNotifications,
         FileManagerUploader,
         FileTypeFilterService,
         ImageDataConverter,
-        NotificationsService,
         SearchFilterService,
         TreeService,
         {provide: 'fileManagerConfiguration', useValue: config},

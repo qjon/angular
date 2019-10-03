@@ -48,8 +48,8 @@ const fileManagerConfiguration: IFileManagerConfiguration = {
     FormsModule,
     HttpClientModule,
     SimpleNotificationsModule.forRoot(),
-    StoreDevtoolsModule.instrument(),
     StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument(),
     TreeModule.forRoot(),
   ],
   providers: [

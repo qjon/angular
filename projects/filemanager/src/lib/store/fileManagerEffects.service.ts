@@ -1,25 +1,41 @@
 import {Injectable} from '@angular/core';
-import {TreeActionTypes} from '@rign/angular2-tree';
+import {IOuterNode, TreeActionTypes, TreeMoveNodeAction} from '@rign/angular2-tree';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {IOuterNode, TreeMoveNodeAction} from '@rign/angular2-tree';
 import {FileManagerActionsService, IFileManagerAction} from './fileManagerActions.service';
 import {IOuterFile} from '../filesList/interface/IOuterFile';
 import {empty, Observable, of} from 'rxjs';
 import {IFileModel} from '../filesList/interface/IFileModel';
 import {ICropBounds} from '../crop/ICropBounds';
 import {FileManagerApiService} from './fileManagerApi.service';
-import {FilemanagerNotifcations} from '../services/FilemanagerNotifcations';
+import {FilemanagerNotifications} from '../services/FilemanagerNotifications';
 import {catchError, filter, map, switchMap} from 'rxjs/operators';
 import {
-  CropFileAction,
   CropFileErrorAction,
   CropFileSuccessAction,
-  DeleteFileSuccessAction, DeleteSelectedFilesSuccessAction, FileManagerAction, LoadFilesAction,
-  LoadFilesSuccessAction, MoveFilesErrorAction, MoveFilesSuccessAction, UploadFilesErrorAction, UploadFilesSuccessAction
+  DeleteFileSuccessAction,
+  DeleteSelectedFilesAction,
+  DeleteSelectedFilesSuccessAction,
+  FileManagerAction,
+  LoadFilesAction,
+  LoadFilesSuccessAction,
+  MoveFilesErrorAction,
+  MoveFilesSuccessAction,
+  UploadFilesErrorAction,
+  UploadFilesSuccessAction
 } from './file-manager.action';
 
 @Injectable()
 export class FileManagerEffectsService {
+
+  public cropFileSuccess$: Observable<CropFileSuccessAction> = this.actions$
+    .pipe(
+      ofType(FileManagerActionsService.FILEMANAGER_CROP_FILE_SUCCESS)
+    );
+
+  public deleteFileSuccess$: Observable<DeleteFileSuccessAction> = this.actions$
+    .pipe(
+      ofType(FileManagerActionsService.FILEMANAGER_DELETE_FILE_SUCCESS)
+    );
 
   @Effect()
   public loadFiles$ = this.actions$
@@ -44,7 +60,7 @@ export class FileManagerEffectsService {
       switchMap((action: IFileManagerAction) => this.cropFile(action.payload.file, action.payload.bounds)
         .pipe(
           map((result: IOuterFile): FileManagerAction => {
-            this.filemanagerNotfication.sendNotification({
+            this.filemanagerNotfication.send({
               type: 'success',
               title: 'Crop Image.',
               message: 'Image has been cropped.'
@@ -74,12 +90,12 @@ export class FileManagerEffectsService {
   public deleteFilesSelection$ = this.actions$
     .pipe(
       ofType(FileManagerActionsService.FILEMANAGER_DELETE_FILE_SELECTION),
-      switchMap((action: IFileManagerAction) => this.deleteFilesSelection(action.payload.fileIds)
+      switchMap((action: DeleteSelectedFilesAction) => this.deleteFilesSelection(action.payload.files)
         .pipe(
           map((result: boolean): FileManagerAction => {
-            return new DeleteSelectedFilesSuccessAction({files: action.payload.fileIds});
+            return new DeleteSelectedFilesSuccessAction({files: action.payload.files});
           }),
-          catchError(() => of(this.onDeleteFilesSelectionError(action.payload.files)))
+          catchError(() => of(this.onDeleteFilesSelectionError()))
         )
       )
     );
@@ -133,11 +149,23 @@ export class FileManagerEffectsService {
       })
     );
 
+  @Effect({dispatch: false})
+  public deleteFileSuccessEffect$ = this.deleteFileSuccess$
+    .pipe(
+      map((action: IFileManagerAction) => {
+        this.filemanagerNotfication.send({
+          type: 'success',
+          title: 'File delete',
+          message: `${action.payload.file.name} has been deleted`
+        });
+      })
+    );
+
   public uploadError$ = this.actions$
     .pipe(
       ofType(FileManagerActionsService.FILEMANAGER_UPLOAD_FILE_ERROR),
       map((action: UploadFilesErrorAction) => {
-        this.filemanagerNotfication.sendNotification({
+        this.filemanagerNotfication.send({
           type: 'alert',
           title: 'File upload',
           message: `${action.payload.files[0].name} exists on the server in this directory`
@@ -145,23 +173,11 @@ export class FileManagerEffectsService {
       })
     );
 
-  public cropFileSuccess$: Observable<CropFileSuccessAction>;
-  public deleteFileSuccess$: Observable<DeleteFileSuccessAction>;
-
   constructor(private actions$: Actions,
               private fileManagerActions: FileManagerActionsService,
-              private filemanagerNotfication: FilemanagerNotifcations,
+              private filemanagerNotfication: FilemanagerNotifications,
               private fileManagerApiService: FileManagerApiService) {
 
-    this.cropFileSuccess$ = this.actions$
-      .pipe(
-        ofType(FileManagerActionsService.FILEMANAGER_CROP_FILE_SUCCESS)
-      );
-
-    this.deleteFileSuccess$ = this.actions$
-      .pipe(
-        ofType(FileManagerActionsService.FILEMANAGER_DELETE_FILE_SUCCESS)
-      );
 
     this.actions$
       .pipe(
@@ -205,7 +221,7 @@ export class FileManagerEffectsService {
   }
 
   protected onCropFileError(file: IFileModel): void {
-    this.filemanagerNotfication.sendNotification({
+    this.filemanagerNotfication.send({
       type: 'alert',
       title: 'Crop Image',
       message: '[FILEMANAGER] Can not crop file'
@@ -213,15 +229,15 @@ export class FileManagerEffectsService {
   }
 
   protected onDeleteFileError(file: IFileModel): void {
-    this.filemanagerNotfication.sendNotification({
+    this.filemanagerNotfication.send({
       type: 'error',
       title: 'Delete file',
       message: '[FILEMANAGER] Can not delete file' + file.name
     });
   }
 
-  protected onDeleteFilesSelectionError(files: IOuterFile[]): void {
-    this.filemanagerNotfication.sendNotification({
+  protected onDeleteFilesSelectionError(): void {
+    this.filemanagerNotfication.send({
       type: 'error',
       title: 'Delete selected files',
       message: '[FILEMANAGER] Not all files were deleted'
@@ -229,7 +245,7 @@ export class FileManagerEffectsService {
   }
 
   protected onLoadFilesError(folderId: string): void {
-    this.filemanagerNotfication.sendNotification({
+    this.filemanagerNotfication.send({
       type: 'error',
       title: 'Load files',
       message: '[FILEMANAGER] Can not load files for folder ' + folderId
@@ -237,7 +253,7 @@ export class FileManagerEffectsService {
   }
 
   protected onMoveFilesSuccess(): void {
-    this.filemanagerNotfication.sendNotification({
+    this.filemanagerNotfication.send({
       type: 'success',
       title: 'Move files',
       message: 'File was successfully moved to folder'
@@ -245,7 +261,7 @@ export class FileManagerEffectsService {
   }
 
   protected onMoveFilesError(): void {
-    this.filemanagerNotfication.sendNotification({
+    this.filemanagerNotfication.send({
       type: 'error',
       title: 'Move files',
       message: 'File was not successfully moved to new folder'

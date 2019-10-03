@@ -4,12 +4,7 @@ import {FileManagerConfiguration} from '../../configuration/fileManagerConfigura
 import {IFileEvent} from '../interface/IFileEvent';
 import {Store} from '@ngrx/store';
 import {IFileManagerState} from '../../store/file-manager.reducer';
-import {
-  ChooseFilesAction,
-  DeleteFileAction,
-  SelectFileAction,
-  UnSelectFileAction
-} from '../../store/file-manager.action';
+import {ChooseFilesAction, DeleteFileAction, SelectFileAction, UnSelectFileAction} from '../../store/file-manager.action';
 
 @Component({
   selector: 'ri-file-component',
@@ -29,6 +24,7 @@ export class FileComponent {
   @Output()
   public onSelectFile = new EventEmitter();
 
+  // todo: @translations - move this string to translations interface
   public removeTitle = 'Remove file';
 
   public constructor(public configuration: FileManagerConfiguration,
@@ -37,8 +33,6 @@ export class FileComponent {
 
   /**
    * Fired when clicked on button "delete file"
-   *
-   * @param file
    */
   public deleteFile($event: MouseEvent, file: IFileModel) {
     this.store.dispatch(new DeleteFileAction({file}));

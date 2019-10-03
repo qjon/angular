@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, Input, OnChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
 import {Button} from './models/button.model';
 import {ToolbarEventModel} from './models/toolbarEvent.model';
 import {IToolbarEvent} from './interface/IToolbarEvent';
@@ -15,12 +15,17 @@ import {UploadFilesAction, UploadFilesErrorAction} from '../store/file-manager.a
 })
 
 export class ToolbarComponent implements OnChanges {
-  @Input() currentFolderId: string;
+  @Input()
+  public currentFolderId: string;
 
-  @Output() onAddFolderClick = new EventEmitter();
-  @Output() onUpload = new EventEmitter();
-  @Output() onMenuButtonClick = new EventEmitter();
+  @Output()
+  public onAddFolderClick = new EventEmitter();
 
+  @Output()
+  public onUpload = new EventEmitter();
+
+  @Output()
+  public onMenuButtonClick = new EventEmitter();
 
   public constructor(public configuration: FileManagerConfiguration,
                      public fileManagerUploader: FileManagerUploader,
@@ -34,7 +39,7 @@ export class ToolbarComponent implements OnChanges {
 
     this.fileManagerUploader.uploader.onCompleteItem = (item: any, response: any, status: number, headers: any) => {
       if (status === 200) {
-        this.store.dispatch(new UploadFilesAction({files: JSON.parse(response)}));
+        this.store.dispatch(new UploadFilesAction({files: [JSON.parse(response)]}));
       } else {
         this.store.dispatch(new UploadFilesErrorAction({files: JSON.parse(response)}));
       }
@@ -46,12 +51,13 @@ export class ToolbarComponent implements OnChanges {
   }
 
   public addFolder() {
-    let event: IToolbarEvent = new ToolbarEventModel(Button.ADD_FOLDER, 'Nowy folder');
+    // todo: @translations - remove polish translations
+    const event: IToolbarEvent = new ToolbarEventModel(Button.ADD_FOLDER, 'Nowy folder');
     this.onAddFolderClick.emit(event);
   }
 
   public onRefreshFilesList() {
-    let event: IToolbarEvent = new ToolbarEventModel(Button.REFRESH_FILES_LIST);
+    const event: IToolbarEvent = new ToolbarEventModel(Button.REFRESH_FILES_LIST);
     this.onMenuButtonClick.emit(event);
   }
 }
