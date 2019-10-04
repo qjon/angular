@@ -1,9 +1,9 @@
-import {FilemanagerNotifcations, INotification} from './FilemanagerNotifcations';
-import {Subject} from 'rxjs';
+import {FilemanagerNotifications} from './FilemanagerNotifications';
+import {INotification} from '../interfaces/filemanager-notification.interface';
 
 describe('FilemanagerNotifications', () => {
   let notification: INotification;
-  let service: FilemanagerNotifcations;
+  let service: FilemanagerNotifications;
 
   beforeEach(() => {
     notification = {
@@ -12,25 +12,17 @@ describe('FilemanagerNotifications', () => {
       message: 'Message'
     };
 
-    service = new FilemanagerNotifcations();
-  });
-
-  describe('getNotificationStream', () => {
-    it('should allowed to get last value', () => {
-      const notifications$ = service.getNotificationStream();
-
-      expect(notifications$ instanceof Subject).toBe(true);
-    });
+    service = new FilemanagerNotifications();
   });
 
   describe('sendNotification', () => {
     it('should set new value', () => {
       const handler = jasmine.createSpy('handler');
 
-      service.getNotificationStream()
+      service.notification$
         .subscribe(handler);
 
-      service.sendNotification(notification);
+      service.send(notification);
 
       expect(handler).toHaveBeenCalledWith(notification);
     });

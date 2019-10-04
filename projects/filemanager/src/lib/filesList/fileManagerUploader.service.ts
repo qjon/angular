@@ -1,7 +1,7 @@
-import {Injectable, Inject} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {ExtendedFileUploader} from '../services/extendedFileUplaoder.service';
 import {IFileManagerConfiguration} from '../configuration/IFileManagerConfiguration';
-import {FilemanagerNotifcations} from '../services/FilemanagerNotifcations';
+import {FilemanagerNotifications} from '../services/FilemanagerNotifications';
 import {FileUploaderOptions} from 'ng2-file-upload';
 
 @Injectable()
@@ -9,7 +9,7 @@ export class FileManagerUploader {
   public uploader: ExtendedFileUploader;
 
   public constructor(@Inject('fileManagerConfiguration') configuration: IFileManagerConfiguration,
-                     filemanagerNotification: FilemanagerNotifcations) {
+                     filemanagerNotification: FilemanagerNotifications) {
     const options: FileUploaderOptions = {
       allowedMimeType: configuration.mimeTypes,
       url: configuration.urls.filesUrl,

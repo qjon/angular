@@ -7,9 +7,14 @@
 <span class="file-name">{{file.name}}</span>
 <div class="file-menu">
   <div class="btn-group btn-group-sm">
-    <!-- Add message: [message]="getRemoveMessage(file)" -->
-    <button mwlConfirmationPopover [title]="removeTitle" [appendToBody]="true"
-            [confirmText]="'Yes'" [cancelText]="'No'" placement="bottom" (confirm)="deleteFile($event, file)"
+    <button mwlConfirmationPopover
+            [popoverTitle]="filemanagerTranslations.RI_FM_LBL_REMOVE_TITLE"
+            [popoverMessage]="getRemoveMessage(file)"
+            [appendToBody]="true"
+            [confirmText]="filemanagerTranslations.RI_FM_BTN_DELETE_YES"
+            [cancelText]="filemanagerTranslations.RI_FM_BTN_DELETE_NO"
+            placement="bottom"
+            (confirm)="deleteFile($event.clickEvent, file)"
             class="btn btn-sm btn-danger btn-icon">
       <i class="fa fa-trash"></i>
     </button>

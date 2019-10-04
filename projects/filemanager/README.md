@@ -28,9 +28,7 @@ It also require such dependencies:
   * @ngrx/core
   * @ngrx/effects
   * @ngrx/store
-  * @ngx-translate/core
   * angular-confirmation-popover
-  * angular2-notifications
   * angular2-uuid
   * bootstrap
   * core-js
@@ -159,31 +157,65 @@ You are able to connect to actions for doing something special (but this is not 
 
 ## Translation
 
-Filemanager module has configured translation for english (default language) and polish. You can add translations for other languages as it is described in [Translate Module](https://github.com/ngx-translate/core/blob/master/README.md) documentation.
-In _Filemanager Module_ you are able to set following labels:
+From version 2.0.0 translation dependency is removed from _@rign/angular2-filemanager_. Now you have to create service which implements IFilemanagerTranslation interface:
+    
+    import {IFilemanagerTranslation} from '@rign/angular2-filemanager';
+    
+    export class TranslationService implements IFilemanagerTranslation {
+        readonly RI_TREE_LBL_ADD_NODE = 'Add data';
+        readonly RI_TREE_LBL_EDIT_NODE = 'Edit data';
+        readonly RI_TREE_LBL_REMOVE_NODE = 'Delete data';
+        readonly RI_TREE_LBL_DROP_ZONE = 'Drop here to move data to root level';
+        readonly RI_FM_BTN_LANDSCAPE = 'Landscape';
+        readonly RI_FM_BTN_PORTRAIT = 'Portrait';
+        readonly RI_FM_BTN_SAVE = 'Save';
+        readonly RI_FM_BTN_DELETE_YES = 'Yes';
+        readonly RI_FM_BTN_DELETE_NO = 'No';
+        readonly RI_FM_LBL_CHOOSE_SELECTION = 'Choose selection';
+        readonly RI_FM_LBL_DELETE_SELECTION = 'Delete selection';
+        readonly RI_FM_LBL_INVERSE_SELECTION = 'Inverse selection';
+        readonly RI_FM_LBL_REMOVE_TITLE = 'Remove file';
+        readonly RI_FM_LBL_SEARCH_FOR = 'Search for...';
+        readonly RI_FM_LBL_SELECT_ALL = 'Select all';
+        readonly RI_FM_LBL_UNSELECT_ALL = 'Unselect all';
+        readonly RI_FM_MSG_REMOVE_QUESTION = 'You are try to delete ${FILENAME}. Are you sure?'; 
+    }
+    
+and set is as provider in module which use _FilemanagerModule_
 
-* RI_TREE_LBL_ADD_NODE - Add node
-* RI_TREE_LBL_EDIT_NODE - Edit node
-* RI_TREE_LBL_REMOVE_NODE - Delete node
-* RI_TREE_LBL_DROP_ZONE - Drop here to move node to root level
-* RI_FM_BTN_LANDSCAPE - Landscape
-* RI_FM_BTN_PORTRAIT - Portrait
-* RI_FM_BTN_SAVE - Save
-* RI_FM_LBL_DELETE_SELECTION - Delete selection
-* RI_FM_LBL_INVERSE_SELECTION - Inverse selection
-* RI_FM_LBL_SEARCH_FOR - Search for...
-* RI_FM_LBL_SELECT_ALL - Select all
-* RI_FM_LBL_UNSELECT_ALL - Unselect all
+    providers: [
+        TreeOneNodeService,
+        {provide: FILEMANAGER_TRANSLATION_TOKEN, useClass: TranslationService},
+    ]
 
-To change language to polish you have to add these lines to your app module:
+Please remember to add also translations for _TreeModule_. Look at [_Translations_](https://github.com/qjon/angular/blob/master/projects/tree/README.md)
 
-    export class AppModule {
-      public constructor(translate: TranslateService) {
-        translate.use('pl');
-      }
+## Notifications
+
+_Filemanager_ module has its own service _FilemanagerNotifications_ which store all notifications that comes from inside of that module.
+You can override this service using _INotificationService_ interface.
+
+    export interface INotificationService {
+      readonly notification$: Observable<INotification>;
+    
+      send(notification: INotification): void;
+    } 
+    
+You can listen on that _notification$_ property and display your own type of notification. Each notification has such interface
+
+    export interface INotification {
+      type: 'alert' | 'error' | 'success';
+      title: string;
+      message?: string;
     }
 
 ## Features
+
+### v3.0.0
+* remove dependency to _@ngx-translate/core_
+* change translation mechanism
+* remove dependency to _angular2-notifications_, now you have to use your own notifications - see _Notifications_ section
+* remove deprecated services: _FileManagerDispatcherService_ and _FileManagerActionsService_ 
 
 ### v2.1.0
 * update to Angular 8

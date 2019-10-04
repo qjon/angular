@@ -8,8 +8,9 @@ import {DropdownComponent} from '../../dropdown/dropdown.component';
 import {FileManagerConfiguration} from '../../configuration/fileManagerConfiguration.service';
 import {filesData} from '../../../../_unitTestMocks/fileDataMock';
 import {ToolbarEventModel} from '../models/toolbarEvent.model';
-import {TranslateModule} from '@ngx-translate/core';
 import {of} from 'rxjs';
+import {FILEMANAGER_TRANSLATION_TOKEN} from '../../services/filemanager-translation.token';
+import {TranslationMock} from '../../interfaces/filemanager-translation.interface.spec';
 
 describe('selection.component', () => {
   let comp: SelectionComponent;
@@ -31,7 +32,7 @@ describe('selection.component', () => {
 
     selectAllButton = new ButtonClass({
       symbol: Button.SELECT_ALL,
-      name: 'RI_FM_LBL_SELECT_ALL',
+      name: 'Select all',
       label: true,
       icon: true,
       iconCssClass: 'fa fa-check-square-o'
@@ -39,7 +40,7 @@ describe('selection.component', () => {
 
     unselectAllButton = new ButtonClass({
       symbol: Button.UNSELECT_ALL,
-      name: 'RI_FM_LBL_UNSELECT_ALL',
+      name: 'Unselect all',
       label: true,
       icon: true,
       iconCssClass: 'fa fa-square-o'
@@ -47,7 +48,7 @@ describe('selection.component', () => {
 
     inverseSelectionButton = new ButtonClass({
       symbol: Button.INVERSE_SELECTION,
-      name: 'RI_FM_LBL_INVERSE_SELECTION',
+      name: 'Inverse selection',
       label: true,
       icon: true,
       iconCssClass: 'fa fa-check-square'
@@ -55,18 +56,18 @@ describe('selection.component', () => {
 
     deleteSelectionButton = new ButtonClass({
       symbol: Button.DELETE_SELECTION,
-      name: 'RI_FM_LBL_DELETE_SELECTION',
+      name: 'Delete selection',
       label: true,
       icon: true,
       iconCssClass: 'fa fa-trash'
     });
 
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
       declarations: [SelectionComponent, DropdownComponent],
       providers: [
         {provide: CurrentDirectoryFilesService, useValue: currentDirectoryFilesServiceStub},
-        {provide: FileManagerConfiguration, useValue: fileManagerConfigurationStub}
+        {provide: FileManagerConfiguration, useValue: fileManagerConfigurationStub},
+        {provide: FILEMANAGER_TRANSLATION_TOKEN, useClass: TranslationMock},
       ]
     });
 

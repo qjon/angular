@@ -1,9 +1,11 @@
-import {Component, Input} from '@angular/core';
+import {Component, Inject, Input} from '@angular/core';
 import {TreeModel} from '../../models/TreeModel';
 import {DragAndDrop} from '../dragAndDrop.service';
 import {IDragAndDrop, IDragElement} from '../../interfaces/IDragAndDrop';
 import {map} from 'rxjs/operators';
 import {merge, Observable} from 'rxjs';
+import {TREE_TRANSLATION_TOKEN} from '../../service/tree-translation-token';
+import {ITreeTranslations} from '../../interfaces/ITreeTranslations';
 
 @Component({
   selector: 'ri-dropzone',
@@ -16,7 +18,8 @@ export class DropzoneComponent {
 
   public isOpen$: Observable<boolean>;
 
-  constructor(public dragAndDrop: DragAndDrop) {
+  constructor(public dragAndDrop: DragAndDrop,
+              @Inject(TREE_TRANSLATION_TOKEN) public treeTranslationService: ITreeTranslations) {
 
     const isDragStart$ = this.dragAndDrop.getDragStream()
       .pipe(

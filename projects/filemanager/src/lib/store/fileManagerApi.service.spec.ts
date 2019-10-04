@@ -1,4 +1,4 @@
-import {FilemanagerNotifcations} from '../services/FilemanagerNotifcations';
+import {FilemanagerNotifications} from '../services/FilemanagerNotifications';
 import {FileManagerApiService} from './fileManagerApi.service';
 import {IOuterNode} from '@rign/angular2-tree';
 import {IOuterFile} from '../filesList/interface/IOuterFile';
@@ -7,7 +7,7 @@ import {UUID} from 'angular2-uuid';
 
 describe('fileManagerApi.service', () => {
   let service: FileManagerApiService;
-  let filemanagerNotifications: FilemanagerNotifcations;
+  let filemanagerNotifications: FilemanagerNotifications;
   let rootNode: IOuterNode;
   let nodesData: IOuterNode[];
   let handler: any;
@@ -56,7 +56,7 @@ describe('fileManagerApi.service', () => {
     localStorage.setItem('fileManagerFiles', JSON.stringify(files));
 
     handler = jasmine.createSpy('handler');
-    filemanagerNotifications = <FilemanagerNotifcations>jasmine.createSpyObj('FilemanagerNotifcations', ['sendNotification']);
+    filemanagerNotifications = <FilemanagerNotifications>jasmine.createSpyObj('filemanagerNotifications', ['send']);
 
     service = new FileManagerApiService(filemanagerNotifications);
   });

@@ -1,7 +1,6 @@
-import {NgModule, CUSTOM_ELEMENTS_SCHEMA, Provider, ModuleWithProviders} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, ModuleWithProviders, NgModule, Provider} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TreeModule} from '@rign/angular2-tree';
-import {NotificationsService, SimpleNotificationsModule} from 'angular2-notifications';
 import {FileManagerComponent} from './filemanager.component';
 import {ToolbarComponent} from './toolbar/toolbar.component';
 import {FilesListComponent} from './filesList/filesList.component';
@@ -17,22 +16,18 @@ import {EffectsModule} from '@ngrx/effects';
 import {FileManagerEffectsService} from './store/fileManagerEffects.service';
 import {StoreModule} from '@ngrx/store';
 import {fileManagerReducer} from './store/file-manager.reducer';
-import {FileManagerActionsService} from './store/fileManagerActions.service';
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {FileTypeFilterService} from './services/fileTypeFilter.service';
 import {SearchFilterService} from './services/searchFilter.service';
-import {FileManagerDispatcherService} from './store/file-manager-dispatcher.service';
 import {FileTypeFilterComponent} from './toolbar/fileTypeFilter/fileTypeFilter.component';
 import {SearchFileComponent} from './toolbar/searchFile/searchFile.component';
 import {FileManagerApiService} from './store/fileManagerApi.service';
 import {ImageDataConverter} from './services/imageDataConverter.service';
-import {FilemanagerNotifcations} from './services/FilemanagerNotifcations';
+import {FilemanagerNotifications} from './services/FilemanagerNotifications';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 import {FileManagerBackendApiService} from './store/fileManagerBackendApi.service';
 import {CurrentDirectoryFilesService} from './services/currentDirectoryFiles.service';
 import {SelectionComponent} from './toolbar/selectionDropDown/selection.component';
 import {FileComponent} from './filesList/file/file.component';
-import {TranslateModule} from '@ngx-translate/core';
 import {IFileManagerConfiguration} from './configuration/IFileManagerConfiguration';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
@@ -47,9 +42,7 @@ import {CommonModule} from '@angular/common';
     HttpClientModule,
     ImageCropperModule,
     ReactiveFormsModule,
-    SimpleNotificationsModule,
     StoreModule.forFeature('files', fileManagerReducer),
-    TranslateModule,
     TreeModule
   ],
   declarations: [
@@ -77,17 +70,14 @@ export class FileManagerModule {
       ngModule: FileManagerModule,
       providers: [
         CurrentDirectoryFilesService,
-        FileManagerActionsService,
         FileManagerApiService,
         FileManagerBackendApiService,
         FileManagerConfiguration,
-        FileManagerDispatcherService,
         FileManagerEffectsService,
-        FilemanagerNotifcations,
+        FilemanagerNotifications,
         FileManagerUploader,
         FileTypeFilterService,
         ImageDataConverter,
-        NotificationsService,
         SearchFilterService,
         TreeService,
         {provide: 'fileManagerConfiguration', useValue: config},
@@ -101,17 +91,14 @@ export class FileManagerModule {
       ngModule: FileManagerModule,
       providers: [
         CurrentDirectoryFilesService,
-        FileManagerActionsService,
         FileManagerApiService,
         FileManagerBackendApiService,
         FileManagerConfiguration,
-        FileManagerDispatcherService,
         FileManagerEffectsService,
-        FilemanagerNotifcations,
+        FilemanagerNotifications,
         FileManagerUploader,
         FileTypeFilterService,
         ImageDataConverter,
-        NotificationsService,
         SearchFilterService,
         TreeService,
         {provide: 'fileManagerConfiguration', useValue: config},

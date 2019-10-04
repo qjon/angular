@@ -23,7 +23,6 @@ It also require to install dependencies:
   * @ngrx/effects
   * @ngrx/store
   * @ngrx/store-devtools
-  * @ngx-translate/core
   * angular2-uuid
   * bootstrap
   * core-js
@@ -36,7 +35,7 @@ It also require to install dependencies:
   
 You can install them using below command: 
 
-    npm i @angular/cdk @angular/common @angular/core @angular/forms @angular/http @ngrx/core @ngrx/effects @ngrx/store @ngx-translate/core angular2-uuid bootstrap core-js font-awesome lodash.isequal ng2-dnd ngx-contextmenu rxjs zone.js --save 
+    npm i @angular/cdk @angular/common @angular/core @angular/forms @angular/http @ngrx/core @ngrx/effects @ngrx/store angular2-uuid bootstrap core-js font-awesome lodash.isequal ng2-dnd ngx-contextmenu rxjs zone.js --save 
   
 # Usage    
     
@@ -74,7 +73,7 @@ Include _TreeModule_  in your application module and create Store with empty sta
       ]
     })
     
-You need also init translations and animations module, because Tree needs it to translate all labels and animate expanding and collapsing. 
+You need also init animations module, because Tree needs it to animate expanding and collapsing node. 
 
     @NgModule({
       declarations: [
@@ -83,13 +82,11 @@ You need also init translations and animations module, because Tree needs it to 
       imports: [
         ...
         BrowserAnimationsModule,
-        TranslateModule.forRoot(),
         TreeModule.forRoot()
       ]
     })
     
-More information about translations you can find below in section _Translation_.
-    
+ 
 In any html file put 
 
     <ri-tree [treeModel]="treeModel"></ri-tree>
@@ -245,21 +242,25 @@ Using _ngrx/store_ you can listen on below actions and do whatever you want:
 
 ## Translation
 
-Tree module has configured translation for english (default language) and polish. You can add translations for other languages as it is described in [Translate Module](https://github.com/ngx-translate/core/blob/master/README.md) documentation.
-In _Tree Module_ you are able to set following labels:
+From version 5.0.0 translation dependency is removed from _@rign/angular2-tree_. Now you have to create service which implements ITreeTranslation interface:
 
-* RI_TREE_LBL_ADD_NODE - Add node
-* RI_TREE_LBL_EDIT_NODE - Edit node
-* RI_TREE_LBL_REMOVE_NODE - Delete node
-* RI_TREE_LBL_DROP_ZONE - Drop here to move node to root level
-
-To change language to polish you have to add these lines to your app module:
-
-    export class AppModule {
-      public constructor(translate: TranslateService) {
-        translate.setDefaultLang('pl');
-      }
+    import {ITreeTranslations} from '@rign/angular2-tree';
+    
+    export class TreeTranslationService implements ITreeTranslations {
+      readonly RI_TREE_LBL_ADD_NODE = 'Add data';
+      readonly RI_TREE_LBL_EDIT_NODE = 'Edit data';
+      readonly RI_TREE_LBL_REMOVE_NODE = 'Delete data';
+      readonly RI_TREE_LBL_DROP_ZONE = 'Drop here to move data to root level';
     }
+
+and set is as provider in module which use _TreeModule_
+
+    providers: [
+        TreeOneNodeService,
+        {provide: TREE_TRANSLATION_TOKEN, useClass: TreeTranslationService},
+    ]
+
+In such case you can use your own translation module and its implementation or even if you don't use translations in your app, you don't have to import additional dependency.
     
 ## Drop elements on tree node
 
@@ -293,6 +294,10 @@ to
 At the end do not forget to add this effects to your app.
  
 ## Changes
+
+### v5.0.0
+* remove translation module
+* add ITreeTranslation interface and TREE_TRANSLATION_TOKEN 
 
 ### v4.1.0
 * update to Angular 8

@@ -1,11 +1,11 @@
 <div class="filemanager-container">
   <div class="fm-header">
     <ri-toolbar
-      #toolbar
-      [currentFolderId]="currentSelectedFolderId"
-      (onAddFolderClick)="onAddFolder()"
-      (onUpload)="onUpload($event)"
-      (onMenuButtonClick)="onMenuButtonClick($event)"
+        #toolbar
+        [currentFolderId]="currentSelectedFolderId"
+        (onAddFolderClick)="onAddFolder()"
+        (onUpload)="onUpload($event)"
+        (onMenuButtonClick)="onMenuButtonClick($event)"
     ></ri-toolbar>
   </div>
   <div class="fm-main-box">
@@ -32,5 +32,4 @@
       <crop-image *ngIf="isCropMode" [file]="currentSelectedFile"></crop-image>
     </div>
   </div>
-  <simple-notifications [options]="notificationOptions"></simple-notifications>
 </div>

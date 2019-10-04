@@ -1,6 +1,6 @@
 <div class="tree">
   <button *ngIf="treeModel.configuration.showAddButton" class="btn btn-dark add-node-button" (click)="onAdd()">
-    <i class="fa fa-plus"></i> {{'RI_TREE_LBL_ADD_NODE' | translate}}
+    <i class="fa fa-plus"></i> {{treeTranslationService.RI_TREE_LBL_ADD_NODE}}
   </button>
   <!--@formatter:off-->
   <div #customTemplate><ng-content></ng-content></div>
@@ -20,7 +20,7 @@
     <ng-template *ngFor="let menuItem of menuList" contextMenuItem let-item
                  (execute)="onContextMenuClick(menuItem.name, $event.item)">
       <span class="{{menuItem.iconCls}}" style="width: 20px; display: inline-block;"></span>
-      {{menuItem.text | translate}}
+      {{menuItem.text}}
     </ng-template>
   </context-menu>
 </div>

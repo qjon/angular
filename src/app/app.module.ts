@@ -12,11 +12,11 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {StoreModule} from '@ngrx/store';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {TreeModule} from '@rign/angular2-tree';
-import {FileManagerModule, FileManagerApiService, IFileManagerConfiguration} from '@rign/angular2-filemanager';
+import {FileManagerApiService, FileManagerModule, IFileManagerConfiguration} from '@rign/angular2-filemanager';
 import {AppRoutingModule} from './app-routing.module';
 import {TreeOneModule} from '../../projects/tree-example/src/app/treeOne/treeOne.module';
 import {TreeTwoModule} from '../../projects/tree-example/src/app/treeTwo/treeTwo.module';
-import { TreeExampleComponent } from './tree-example/tree-example.component';
+import {TreeExampleComponent} from './tree-example/tree-example.component';
 
 const fileManagerConfiguration: IFileManagerConfiguration = {
   urls: {
@@ -48,8 +48,8 @@ const fileManagerConfiguration: IFileManagerConfiguration = {
     FormsModule,
     HttpClientModule,
     SimpleNotificationsModule.forRoot(),
-    StoreDevtoolsModule.instrument(),
     StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument(),
     TreeModule.forRoot(),
     TreeOneModule,
     TreeTwoModule,

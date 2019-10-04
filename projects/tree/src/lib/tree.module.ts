@@ -12,7 +12,6 @@ import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {TreeEffectsService} from './store/treeEffects.service';
 import {NodeDispatcherService} from './service/nodesDispatcher.service';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {HttpClientModule} from '@angular/common/http';
 import {ContextMenuModule} from 'ngx-contextmenu';
 import {treeReducer} from './store/treeReducer';
@@ -33,7 +32,6 @@ export const NODE_DISPATCHER_TOKEN = new InjectionToken<NodeDispatcherService>('
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forFeature('trees', treeReducer),
-    TranslateModule,
   ],
   declarations: [
     TreeComponent,
@@ -81,28 +79,7 @@ export class TreeModule {
     };
   }
 
-  public constructor(private translate: TranslateService) {
-    this.setTranslationForEN();
-    this.setTranslationForPL();
-    this.translate.setDefaultLang('en');
-  }
-
-  private setTranslationForPL(): void {
-    this.translate.setTranslation('pl', {
-      RI_TREE_LBL_ADD_NODE: 'Dodaj',
-      RI_TREE_LBL_EDIT_NODE: 'Edytuj',
-      RI_TREE_LBL_REMOVE_NODE: 'Usuń',
-      RI_TREE_LBL_DROP_ZONE: 'Upuść tutaj'
-    });
-  }
-
-  private setTranslationForEN(): void {
-    this.translate.setTranslation('en', {
-      RI_TREE_LBL_ADD_NODE: 'Add data',
-      RI_TREE_LBL_EDIT_NODE: 'Edit data',
-      RI_TREE_LBL_REMOVE_NODE: 'Delete data',
-      RI_TREE_LBL_DROP_ZONE: 'Drop here to move data to root level'
-    });
+  public constructor() {
   }
 }
 

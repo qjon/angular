@@ -1,11 +1,12 @@
 import {FileItem, FileUploader, FileUploaderOptions} from 'ng2-file-upload';
 import {IFileDataProperties, ImageDataConverter} from './imageDataConverter.service';
-import {FilemanagerNotifcations, INotification} from './FilemanagerNotifcations';
+import {FilemanagerNotifications} from './FilemanagerNotifications';
 import {FileLikeObject} from 'ng2-file-upload/file-upload/file-like-object.class';
+import {INotification} from '../interfaces/filemanager-notification.interface';
 
 export class ExtendedFileUploader extends FileUploader {
 
-  public constructor(options: FileUploaderOptions, private filemanagerNotification: FilemanagerNotifcations) {
+  public constructor(options: FileUploaderOptions, private filemanagerNotification: FilemanagerNotifications) {
     super(options);
   }
 
@@ -21,7 +22,7 @@ export class ExtendedFileUploader extends FileUploader {
     } else {
       notification.message = `File mime type "${item.type}" is not allowed`;
     }
-    this.filemanagerNotification.sendNotification(notification);
+    this.filemanagerNotification.send(notification);
   }
 
   public uploadItem(value: FileItem): void {

@@ -1,20 +1,22 @@
 import {IContextMenu} from '@rign/angular2-tree';
-import {Injectable, Inject} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {IFileTypeFilter} from '../toolbar/interface/IFileTypeFilter';
 import {ICropSize} from '../crop/ICropSize';
 import {IFileManagerConfiguration} from './IFileManagerConfiguration';
+import {FILEMANAGER_TRANSLATION_TOKEN} from '../services/filemanager-translation.token';
+import {IFilemanagerTranslation} from '../interfaces/filemanager-translation.interface';
 
 @Injectable()
 export class FileManagerConfiguration {
 
   public allowedCropSize: ICropSize[] = [
     {
-      name: 'RI_FM_BTN_LANDSCAPE',
+      name: this.filemanagerTranslations.RI_FM_BTN_LANDSCAPE,
       width: 300,
       height: 100
     },
     {
-      name: 'RI_FM_BTN_PORTRAIT',
+      name: this.filemanagerTranslations.RI_FM_BTN_PORTRAIT,
       width: 200,
       height: 300
     }
@@ -56,7 +58,7 @@ export class FileManagerConfiguration {
     }
   ];
 
-  public folderUrls: {foldersUrl: string, folderMoveUrl: string};
+  public folderUrls: { foldersUrl: string, folderMoveUrl: string };
   public fileUrl = '/api/files';
 
   public isMultiSelection: boolean;
@@ -67,7 +69,8 @@ export class FileManagerConfiguration {
 
   public allowChooseMultipleFiles: boolean;
 
-  constructor(@Inject('fileManagerConfiguration') configuration: IFileManagerConfiguration) {
+  constructor(@Inject('fileManagerConfiguration') configuration: IFileManagerConfiguration,
+              @Inject(FILEMANAGER_TRANSLATION_TOKEN) public filemanagerTranslations: IFilemanagerTranslation) {
     const {foldersUrl, folderMoveUrl} = configuration.urls;
     this.folderUrls = {foldersUrl, folderMoveUrl};
     this.fileUrl = configuration.urls.filesUrl;

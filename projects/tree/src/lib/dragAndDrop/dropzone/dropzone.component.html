@@ -1,3 +1,3 @@
 <div *ngIf="isOpen$ | async" (drop)="onDrop()" (dragover)="onDragOver($event)" class="dropzone">
-  {{'RI_TREE_LBL_DROP_ZONE' | translate}}
+  {{treeTranslationService.RI_TREE_LBL_DROP_ZONE}}
 </div>

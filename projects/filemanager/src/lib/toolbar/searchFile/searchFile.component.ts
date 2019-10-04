@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {SearchFilterService} from '../../services/searchFilter.service';
 import {debounceTime} from 'rxjs/operators';
+import {FILEMANAGER_TRANSLATION_TOKEN} from '../../services/filemanager-translation.token';
+import {IFilemanagerTranslation} from '../../interfaces/filemanager-translation.interface';
 
 @Component({
   selector: 'ri-search-file',
@@ -12,7 +14,8 @@ export class SearchFileComponent implements OnInit {
 
   public searchField = new FormControl();
 
-  constructor(private searchFilterService: SearchFilterService) {
+  constructor(private searchFilterService: SearchFilterService,
+              @Inject(FILEMANAGER_TRANSLATION_TOKEN) public filemanagerTranslations: IFilemanagerTranslation) {
   }
 
   ngOnInit() {
