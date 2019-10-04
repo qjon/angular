@@ -12,7 +12,7 @@ describe('e2e App', () => {
 
   beforeEach(() => {
     page = new AppPage();
-    treeOne = new Tree('app-tree-one')
+    treeOne = new Tree('app-tree-one');
   });
 
   it('should display welcome message', () => {
@@ -203,7 +203,7 @@ describe('e2e App', () => {
 
       treeOne.createNewNode(grandParentName);
       const grandParent = new TreeItem(treeOne.getRootElements().last());
-      grandParent.select()
+      grandParent.select();
       treeOne.createNewNode(parentName);
       const parent = new TreeItem(grandParent.getChildren().first());
       parent.select();

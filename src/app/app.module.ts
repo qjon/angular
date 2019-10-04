@@ -10,13 +10,19 @@ import {HttpClientModule} from '@angular/common/http';
 import {SimpleNotificationsModule} from 'angular2-notifications';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {StoreModule} from '@ngrx/store';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
-import {TreeModule} from '@rign/angular2-tree';
-import {FileManagerApiService, FileManagerModule, IFileManagerConfiguration} from '@rign/angular2-filemanager';
+import {TranslateModule} from '@ngx-translate/core';
+import {TREE_TRANSLATION_TOKEN, TreeModule} from '@rign/angular2-tree';
+import {
+  FILEMANAGER_TRANSLATION_TOKEN,
+  FileManagerApiService,
+  FileManagerModule,
+  IFileManagerConfiguration
+} from '@rign/angular2-filemanager';
 import {AppRoutingModule} from './app-routing.module';
 import {TreeOneModule} from '../../projects/tree-example/src/app/treeOne/treeOne.module';
 import {TreeTwoModule} from '../../projects/tree-example/src/app/treeTwo/treeTwo.module';
 import {TreeExampleComponent} from './tree-example/tree-example.component';
+import {TranslationService} from './translations';
 
 const fileManagerConfiguration: IFileManagerConfiguration = {
   urls: {
@@ -56,7 +62,9 @@ const fileManagerConfiguration: IFileManagerConfiguration = {
     TranslateModule.forRoot(),
   ],
   providers: [
-    FileManagerApiService
+    FileManagerApiService,
+    {provide: TREE_TRANSLATION_TOKEN, useClass: TranslationService},
+    {provide: FILEMANAGER_TRANSLATION_TOKEN, useClass: TranslationService},
   ],
   bootstrap: [AppComponent],
   schemas: [
@@ -64,27 +72,4 @@ const fileManagerConfiguration: IFileManagerConfiguration = {
   ]
 })
 export class AppModule {
-
-  public constructor(private translate: TranslateService) {
-    this.setTranslationForEN();
-    this.translate.setDefaultLang('en');
-  }
-
-  private setTranslationForEN(): void {
-    this.translate.setTranslation('en', {
-      RI_TREE_LBL_ADD_NODE: 'Add data',
-      RI_TREE_LBL_EDIT_NODE: 'Edit data',
-      RI_TREE_LBL_REMOVE_NODE: 'Delete data',
-      RI_TREE_LBL_DROP_ZONE: 'Drop here to move data to root level',
-      RI_FM_BTN_LANDSCAPE: 'Landscape',
-      RI_FM_BTN_PORTRAIT: 'Portrait',
-      RI_FM_BTN_SAVE: 'Save',
-      RI_FM_LBL_CHOOSE_SELECTION: 'Choose selection',
-      RI_FM_LBL_DELETE_SELECTION: 'Delete selection',
-      RI_FM_LBL_INVERSE_SELECTION: 'Inverse selection',
-      RI_FM_LBL_SEARCH_FOR: 'Search for...',
-      RI_FM_LBL_SELECT_ALL: 'Select all',
-      RI_FM_LBL_UNSELECT_ALL: 'Unselect all',
-    });
-  }
 }
