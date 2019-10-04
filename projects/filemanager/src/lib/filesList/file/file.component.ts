@@ -1,10 +1,12 @@
-import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, Output, ViewEncapsulation} from '@angular/core';
 import {IFileModel} from '../interface/IFileModel';
 import {FileManagerConfiguration} from '../../configuration/fileManagerConfiguration.service';
 import {IFileEvent} from '../interface/IFileEvent';
 import {Store} from '@ngrx/store';
 import {IFileManagerState} from '../../store/file-manager.reducer';
 import {ChooseFilesAction, DeleteFileAction, SelectFileAction, UnSelectFileAction} from '../../store/file-manager.action';
+import {FILEMANAGER_TRANSLATION_TOKEN} from '../../services/filemanager-translation.token';
+import {IFilemanagerTranslation} from '../../interfaces/filemanager-translation.interface';
 
 @Component({
   selector: 'ri-file-component',
@@ -24,11 +26,9 @@ export class FileComponent {
   @Output()
   public onSelectFile = new EventEmitter();
 
-  // todo: @translations - move this string to translations interface
-  public removeTitle = 'Remove file';
-
   public constructor(public configuration: FileManagerConfiguration,
-                     private store: Store<IFileManagerState>) {
+                     private store: Store<IFileManagerState>,
+                     @Inject(FILEMANAGER_TRANSLATION_TOKEN) public filemanagerTranslations: IFilemanagerTranslation) {
   }
 
   /**
@@ -42,11 +42,11 @@ export class FileComponent {
   }
 
   public getRemoveMessage(file: IFileModel) {
-    return 'You are try to delete <b>' + file.name + '</b>. Are you sure?';
+    return this.filemanagerTranslations.RI_FM_MSG_REMOVE_QUESTION.replace('${FILENAME}', file.name);
   }
 
   public openPreview($event: MouseEvent): void {
-    let fileEvent: IFileEvent = {
+    const fileEvent: IFileEvent = {
       eventName: 'onPreviewFile',
       file: this.file
     };
@@ -57,7 +57,7 @@ export class FileComponent {
   }
 
   public openCrop($event: MouseEvent): void {
-    let fileEvent: IFileEvent = {
+    const fileEvent: IFileEvent = {
       eventName: 'onCropFile',
       file: this.file
     };

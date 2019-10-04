@@ -37,7 +37,6 @@ export const emptyTreeData: ITreeData = {
 function copyState(state: ITreeState, treeId: string = null) {
   const newState = {...state};
 
-  // todo: find better way to clone object
   if (treeId) {
     newState[treeId] = {
       nodes: {

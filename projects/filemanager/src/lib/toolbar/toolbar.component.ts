@@ -51,8 +51,7 @@ export class ToolbarComponent implements OnChanges {
   }
 
   public addFolder() {
-    // todo: @translations - remove polish translations
-    const event: IToolbarEvent = new ToolbarEventModel(Button.ADD_FOLDER, 'Nowy folder');
+    const event: IToolbarEvent = new ToolbarEventModel(Button.ADD_FOLDER, '');
     this.onAddFolderClick.emit(event);
   }
 
